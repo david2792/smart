@@ -1,0 +1,126 @@
+
+
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-body">
+              <h4 class="card-title">Formulario de Productos</h4>
+                <mat-vertical-stepper [linear]="!isLinear" #stepper>
+                  <mat-step [stepControl]="firstFormGroup">
+                    <form class="form-inline" [formGroup]="firstFormGroup">
+                      <ng-template matStepLabel>Informacion del Producto</ng-template> 
+                    <!-- autocompletado categoria -->
+              
+                        <mat-form-field class="example-full-width">
+                          <input  type="text"  placeholder="Ingrese la Categoria" aria-label="Assignee" matInput formControlName="categoria"  [matAutocomplete]="auto">
+                          <mat-autocomplete #auto="matAutocomplete" >
+                            <mat-option *ngFor="let option of filteredOptions | async"   [value]="option.nombre"  >
+                            {{option.nombre}}
+                           </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
+                        <!-- ESTO ES UNA PRUEBA -->
+                              <!-- FIN DE LA PRUEBA -->
+                        <mat-form-field class="example-full-width">
+                          <input  type="text"  placeholder="Ingrese la Marca" aria-label="Assignee" matInput formControlName="marca"  [matAutocomplete]="marca">
+                          <mat-autocomplete #marca="matAutocomplete"  >
+                            <mat-option *ngFor="let option of filteredOptionsMarcas | async"   [value]="option.nombre" >
+                            {{option.nombre}}
+                           </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
+                        <!-- autocompletado de unidad de medida -->
+                        <mat-form-field class="example-full-width">
+                          <input  type="text"  placeholder="Ingrese la Unidad de Medida" aria-label="Assignee" matInput formControlName="medida"  [matAutocomplete]="medida">
+                          <mat-autocomplete #medida="matAutocomplete" >
+                            <mat-option *ngFor="let option of filteredOptionsMedida | async"   [value]="option.nombre">
+                            {{option.nombre}}
+                           </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
+                        <!-- fin de unidad de medida -->
+                         <!-- autocompletado de presentacion -->
+                         <mat-form-field class="example-full-width">
+                          <input  type="text"  placeholder="Ingrese la presentacion" aria-label="Assignee" matInput formControlName="presentacion"  [matAutocomplete]="presentacion">
+                          <mat-autocomplete #presentacion="matAutocomplete" >
+                            <mat-option *ngFor="let option of filteredOptionsPresentacion | async"   [value]="option.descripcion">
+                            {{option.descripcion}}
+                           </mat-option>
+                          </mat-autocomplete>
+                        </mat-form-field>
+                        <!-- fin de unidad de presentacion -->
+                          <!-- autocompletado de impuesto -->
+                          <mat-form-field class="example-full-width">
+                            <input  type="text"  placeholder="Ingrese el impuesto" aria-label="Assignee" matInput formControlName="impuesto"  [matAutocomplete]="impuesto">
+                            <mat-autocomplete #impuesto="matAutocomplete" >
+                              <mat-option *ngFor="let option of filteredOptionsImpuesto | async"   [value]="option.nombre">
+                              {{option.nombre}}
+                             </mat-option>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                          <!-- fin de unidad de presentacion -->
+                  
+                        <button mat-button matStepperNext  class="btn btn-primary" >Siguiente</button>
+                  
+                    </form>
+                  </mat-step>
+                  <mat-step [stepControl]="secondFormGroup">
+                    <form [formGroup]="secondFormGroup">
+                      <ng-template matStepLabel>Descripcion del Producto</ng-template>
+                      <mat-form-field>
+                        <input matInput placeholder="Ingrese el codigo de barras" formControlName="codigobarra"  required>
+                        
+                      </mat-form-field>
+                     
+                      <mat-form-field>
+                        <input matInput placeholder="Ingrese la descripcion del producto" formControlName="descripcion" required>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="Ingrese la candida de la presentacion" formControlName="cantidadpresentacion" required>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="El producto es Perecedero? Si - No" formControlName="perecedero" required>
+                      </mat-form-field>
+                      <div>
+                        <button mat-button matStepperPrevious>Atras</button>
+                        <button mat-button matStepperNext>Siguiente</button>
+                      </div>
+                    </form>
+                  </mat-step>
+                  <mat-step [stepControl]="tercerFromGroup">
+                  <form [formGroup]="tercerFromGroup" >
+                    <ng-template matStepLabel>Detalle Stock</ng-template>
+                    <mat-form-field>
+                      <input matInput placeholder="Ingrese el Stock Actual" formControlName="stockactual"   required  >
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput placeholder="Ingrese el Stock Minimo" formControlName="stockminimo" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput placeholder="Ingrese el Stock Maximo" formControlName="stockmaximo"  required>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput placeholder="Ingrese el Precio de Compra"  formControlName="preciocompra" (keyup)="milesCompra()" required>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput placeholder="Ingrese el Precio de Venta Minorista" formControlName="precioventaminorista" (keyup)="milesVenta()"  required>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput placeholder="Ingrese el Precio de Venta Mayorista" formControlName="preciomayorista" (blur)="milesMayorista()"  required>
+                    </mat-form-field>
+                    <mat-form-field>
+                      <input matInput placeholder="Ingrese el Limite de Descuento" formControlName="limitedescuento" required>
+                    </mat-form-field>
+                  </form>
+                  <div>
+                      <button mat-button matStepperPrevious>Atras</button>
+                      <button mat-button  [disabled]="tercerFromGroup.invalid"  class="btn btn-primary" (click)="editar ? actualizarProducto(): nuevoProductos()" type="submit" >Confirmar</button>
+                      <button mat-button  class="btn btn-danger" (click)="stepper.reset()">Limpiar</button>
+                    </div>
+                  </mat-step>
+                </mat-vertical-stepper>
+          </div>
+      </div>
+  </div>
+</div>
+

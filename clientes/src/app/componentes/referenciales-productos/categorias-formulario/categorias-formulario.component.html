@@ -1,0 +1,46 @@
+
+  <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Formulario de Categorias</h4>
+                <form class="m-t-40" novalidate #formularioFamilia="ngForm" >
+                    <div class="form-group">
+                        <h5>Ingrese el nombre de la familia<span class="text-danger">*</span></h5>
+                        <div class="controls">
+                            <ng-autocomplete type="text"  #ngAutoCompleteStatic
+                                             [data]="countriesTemplate"
+                                             name="familia"
+                                             [(ngModel)]="categoria.familia"
+                                             [initialValue]=""
+                                             [placeHolder]="placeholder"
+                                             [searchKeyword]="keyword"
+                                             historyIdentifier="countriesTemplateList"
+                                             [historyHeading]="historyHeading"
+                                             historyListMaxNumber="3"
+                                             notFoundText="Not found"
+                                             [itemTemplate]="itemTemplateStatic"
+                                             [notFoundTemplate]="notFoundTemplate">
+                            </ng-autocomplete>
+                  
+                            <ng-template #itemTemplateStatic let-item>
+                              <a [innerHTML]="item"></a>
+                            </ng-template>
+                  
+                            <ng-template #notFoundTemplate let-notFound>
+                              <div [innerHTML]="notFound"></div>
+                            </ng-template></div>
+                            <br>
+                            <h5>Ingrese el nombre de la Categoria<span class="text-danger">*</span></h5>
+                            <div class="controls">
+                                <input type="text" name="text" class="form-control"  name="nombre" #nombre="ngModel" [(ngModel)]="categoria.nombre"  required data-validation-required-message="This field is required"> </div>     
+                    </div>
+                    <div class="text-xs-right">
+                        <button type="submit" class="btn btn-primary" (click)=" editar ? actualizarCategoria() : nuevaCategoria()" type="submit" [disabled]="!formularioFamilia.form.valid">Guardar</button>
+                        <button type="reset" class="btn btn-inverse">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

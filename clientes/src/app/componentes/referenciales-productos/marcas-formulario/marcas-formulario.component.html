@@ -1,0 +1,29 @@
+
+
+                  <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                  <div class="col-12">
+                      <div class="card">
+                          <div class="card-body">
+                              <h4 class="card-title">Formulario de Marcas</h4>
+                              <form class="m-t-40" novalidate  #formularioMarcas="ngForm">
+                                  <div class="form-group">
+                                      <h5>Ingrese el nombre de la marca<span class="text-danger">*</span></h5>
+                                      <div class="controls">
+                                          <input type="text" name="text" class="form-control"  name="nombre" #nombre="ngModel" [(ngModel)]="marca.nombre"  required data-validation-required-message="This field is required"> </div>
+                                  </div>
+                                  <div class="text-xs-right">
+                                      <button type="submit" class="btn btn-primary" (click)=" editar ? actualizarMarca() : nuevaMarca()" type="submit" [disabled]="!formularioMarcas.form.valid">Guardar</button>
+                                      <button type="reset" class="btn btn-inverse">Cancelar</button>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <!-- ============================================================== -->
+              <!-- End PAge Content -->
+              <!-- ============================================================== -->

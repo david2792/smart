@@ -1,0 +1,32 @@
+
+
+                  <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Formulario de Impuesto</h4>
+                                <form class="m-t-40" novalidate  #formularioImpuesto="ngForm">
+                                    <div class="form-group">
+                                        <h5>Ingrese el nombre del Impuesto<span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" name="text" class="form-control"  name="nombre" #nombre="ngModel" [(ngModel)]="impuesto.nombre"  required data-validation-required-message="This field is required"> </div>
+                                            <h5>Dividido Por<span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="text" name="text" class="form-control" #porcentaje="ngModel" [(ngModel)]="impuesto.porcentaje"  required data-validation-required-message="This field is required"> </div>
+                                    </div>
+                                    <div class="text-xs-right">
+                                        <button type="submit" class="btn btn-primary" (click)="editar ? actualizarImpuesto() : nuevoImpuesto()" type="submit" [disabled]="!formularioImpuesto.form.valid">Guardar</button>
+                                        <button type="reset" class="btn btn-inverse">Cancelar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+  
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->

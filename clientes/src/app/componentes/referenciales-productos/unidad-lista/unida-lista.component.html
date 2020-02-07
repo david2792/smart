@@ -1,0 +1,45 @@
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Lista de U. de Medida</h4>
+           
+            <div class="table-responsive">
+                <input type="text" class="form-control m p-0 " name="filtroUnidad" [(ngModel)]="filtroUnidad"  placeholder="Buscar" />
+                <table class="table color-table inverse-table">
+                    <thead>
+                        <tr>
+                          
+                            <th>Codigo Unidad</th>
+                            <th>Nombre</th>
+                            <th>Simbolo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let unidad of unidades  | buscarunidad:filtroUnidad | paginate:{itemsPerPage:3,currentPage: p}; let i = index  ">
+                              <td >{{unidad.codigo}}</td>
+                              <td >{{unidad.nombre}}</td>
+                              <td>{{unidad.simbolo}}</td>
+                            <td>
+                                <button  [routerLink]="['/unidades/editar',unidad.codigo]"    class="btn btn-primary">
+                                <i  class="fa fa-edit"></i>
+                              </button>
+
+                                <button  (click)="eliminarUnidad(unidad.codigo)" class="btn btn-danger">
+                                <i class="fa fa-trash-o"></i>
+                              </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                <div class="text-right">
+                    <button routerLink="/unidades/agregar" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                    <i class="fa fa-plus"></i> 
+                    Crear U. Medida
+                  </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

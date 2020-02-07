@@ -1,0 +1,35 @@
+npm init --yes (crear un documento JSON que tiene los datos del proyecto y los modulos)
+ promise-mysql@3 (permite conectar con mysql utilizando promesas de JS)
+npm i express morgan cors (mogarn= permite convertir de TYSCRIP a JS cors permite comunicar 2 servidores)
+se crea una carpeta src donde se guarda todo el codigo
+npm install -g typescript 
+tsc --init(crear un documento JSON con las configuraciones de Typescript donde se crea una carpeta para guardar los JS que son convertidos  "outDir": "./build")
+en el package.json se crea un comando para pasar de tsc a js en la seccion de scripts "tsc -w"
+ npm i nodemon -D (modulo para mantener ejecudado node )
+en el package.json se crea un comando para vigilar los cambios en la carpeta build en la seccion de scripts "nodemon build/index.js"
+npm i @types/express -D instala para que node lo entienda al importar las dependencias
+
+angular
+
+ng new cliente --routing( ya crea la carpeta para las rutas)
+ng g c components/navegacion
+ng g s servicios/marcas
+
+ ng g pipe pipes/buscarUnidad
+npm install --save jquery
+primero el modelo
+el servicio 
+
+npm i angular-ng-autocomplete
+
+
+or create a new repository on the command line
+echo "# smart" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/david2792/smart.git
+git push -u origin master
+…or push an existing repository from the command line
+git remote add origin https://github.com/david2792/smart.git
+git push -u origin master

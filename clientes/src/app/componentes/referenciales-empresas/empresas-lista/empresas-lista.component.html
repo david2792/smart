@@ -1,0 +1,58 @@
+ <div class="col" >
+                <div class="card">
+                    <div class="card-body">
+
+                        <div class="example-header">
+                            <mat-form-field>
+                              <input matInput (keyup)="doFilter($event.target.value)" placeholder="Buscar Empresa">
+                            </mat-form-field>
+                          </div>
+                        
+                        <table mat-table [dataSource] = "dataSource " class = "mat-elevation-z8"> 
+                            
+                            <ng-container matColumnDef = "codigo">
+                               <th mat-header-cell *matHeaderCellDef> Codigo</th>
+                               <td mat-cell *matCellDef = "let element"> {{element.codigo}} </td>
+                            </ng-container>
+                            <ng-container matColumnDef = "ruc">
+                                <th mat-header-cell *matHeaderCellDef> RUC</th>
+                                <td mat-cell *matCellDef = "let element"> {{element.ruc}} </td>
+                             </ng-container>
+                             <ng-container matColumnDef = "razonsocial">
+                                <th mat-header-cell *matHeaderCellDef> Razon Social</th>
+                                <td mat-cell *matCellDef = "let element"> {{element.razonsocial}} </td>
+                             </ng-container>
+                             <ng-container matColumnDef = "nombrefantasia">
+                                <th mat-header-cell *matHeaderCellDef> Nombre de Fantasia</th>
+                                <td mat-cell *matCellDef = "let element"> {{element.nombrefantasia}} </td>
+                             </ng-container>
+                             <ng-container matColumnDef = "web">
+                                <th mat-header-cell *matHeaderCellDef>WEB </th>
+                                <td mat-cell *matCellDef = "let element"> {{element.web}} </td>
+                             </ng-container>
+                             <ng-container matColumnDef = "accion">
+                                <th mat-header-cell *matHeaderCellDef>Acciones </th>
+                                <td mat-cell *matCellDef = "let row"> <button [routerLink]="['/empresas/editar',row.codigo]"  class="btn btn-primary">
+                                    <i  class="fa fa-edit"></i>
+                                  </button></td>
+                             </ng-container>
+                             
+                             
+                            <tr mat-header-row *matHeaderRowDef = "displayedColumns"></tr>
+                            <tr mat-row *matRowDef = "let row; columns: displayedColumns;"></tr>
+                           
+                             
+                         </table>
+                         <mat-paginator [pageSize]="4" [pageSizeOptions]="[4, 6, 10, 20]">
+                        </mat-paginator>
+                         <div class="text-right">
+                             <button routerLink="/empresas/agregar" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                             <i class="fa fa-plus"></i> 
+                             Crear Empresa
+                           </button>
+                         </div>
+                    </div>
+                </div>
+            </div> 
+              
+        

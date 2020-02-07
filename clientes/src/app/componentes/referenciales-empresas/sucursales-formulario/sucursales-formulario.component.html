@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Formulario de Sucursal</h4>
+                    <form [formGroup]="sucursalformulario">
+                      <mat-form-field>
+                        <input matInput placeholder="Ingrese el Codigo " formControlName="codigo">
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="Ingrese el Nombre de la Sucursal " formControlName="nombre">
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="Ingrese el Telefono "formControlName="telefono">
+                      </mat-form-field>
+                      <!-- autocompletado -->
+                      <mat-form-field class="example-full-width">
+                        <input  type="text"  placeholder="Ingrese el Nombre de la Empresa" aria-label="Assignee" matInput formControlName="empresa"  [matAutocomplete]="auto">
+                        <mat-autocomplete #auto="matAutocomplete" >
+                          <mat-option *ngFor="let option of filteredOptions | async"   [value]="option.razonsocial"  >
+                          {{option.razonsocial}}
+                         </mat-option>
+                        </mat-autocomplete>
+                      </mat-form-field>
+                      <!--  -->
+                      <div class="text-xs-right">
+                        <button type="submit"  [disabled]="sucursalformulario.invalid"  class="btn btn-primary" (click)="editar ? actualizarSucursal():nuevaSucursal()" type="submit" >Guardar</button>
+                        <button type="reset" class="btn btn-inverse">Cancelar</button>
+                    </div>
+
+                    </form>
+
+            </div>
+        </div>
+    </div>
+  </div>
+  
+  
