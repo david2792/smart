@@ -70,7 +70,7 @@ class SucursalControlador {
             const codigoempresas = idempresa[0].codigo; //CAPTURA EL VALOR DEL CODIDO FAMILIA DESDE EL DOCUMENTO JSON
             const values = { codigo, nombre, telefono, codigoempresas };
             const sucursal = yield base_datos_1.default.query('UPDATE sucursal SET ? WHERE codigosucursal = ?', [values, id]);
-            res.json({ message: 'La empresa fue actualizada' });
+            res.json({ message: 'La sucursal fue actualizada' });
         });
     }
 }
