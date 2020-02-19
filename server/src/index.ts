@@ -12,6 +12,12 @@ import categoriasRutas  from './rutas/categoriasRutas';
 import productosRutas from './rutas/productosRutas';
 import empresasRutas from './rutas/empresasRutas';
 import sucursalesRutas from './rutas/sucursalesRutas';
+import paisesRutas from './rutas/paisesRutas';
+import departamentoRutas from './rutas/departamentosRutas';
+import ciudadRutas from './rutas/ciudadesRutas';
+import clienteRutas from './rutas/ clientesRutas';
+import usuarioRutas from './rutas/usuariosRutas';
+import nivelRutas from './rutas/nivelUsuariosRutas';
 class Server
 {
    public app: Application;
@@ -41,6 +47,12 @@ class Server
         this.app.use('/api/productos',productosRutas);
         this.app.use('/api/empresas',empresasRutas);
         this.app.use('/api/sucursales',sucursalesRutas);
+        this.app.use('/api/paises',paisesRutas);
+        this.app.use('/api/departamentos',departamentoRutas);
+        this.app.use('/api/ciudades',ciudadRutas);
+        this.app.use('/api/clientes',clienteRutas);
+        this.app.use('/api/usuarios',usuarioRutas);
+        this.app.use('/api/nivelusuarios',nivelRutas);
     }
     iniciar():void
     {

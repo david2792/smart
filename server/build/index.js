@@ -16,6 +16,12 @@ const categoriasRutas_1 = __importDefault(require("./rutas/categoriasRutas"));
 const productosRutas_1 = __importDefault(require("./rutas/productosRutas"));
 const empresasRutas_1 = __importDefault(require("./rutas/empresasRutas"));
 const sucursalesRutas_1 = __importDefault(require("./rutas/sucursalesRutas"));
+const paisesRutas_1 = __importDefault(require("./rutas/paisesRutas"));
+const departamentosRutas_1 = __importDefault(require("./rutas/departamentosRutas"));
+const ciudadesRutas_1 = __importDefault(require("./rutas/ciudadesRutas"));
+const _clientesRutas_1 = __importDefault(require("./rutas/ clientesRutas"));
+const usuariosRutas_1 = __importDefault(require("./rutas/usuariosRutas"));
+const nivelUsuariosRutas_1 = __importDefault(require("./rutas/nivelUsuariosRutas"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -40,6 +46,12 @@ class Server {
         this.app.use('/api/productos', productosRutas_1.default);
         this.app.use('/api/empresas', empresasRutas_1.default);
         this.app.use('/api/sucursales', sucursalesRutas_1.default);
+        this.app.use('/api/paises', paisesRutas_1.default);
+        this.app.use('/api/departamentos', departamentosRutas_1.default);
+        this.app.use('/api/ciudades', ciudadesRutas_1.default);
+        this.app.use('/api/clientes', _clientesRutas_1.default);
+        this.app.use('/api/usuarios', usuariosRutas_1.default);
+        this.app.use('/api/nivelusuarios', nivelUsuariosRutas_1.default);
     }
     iniciar() {
         this.app.listen(this.app.get('port'), () => {
