@@ -24,14 +24,15 @@ class ClienteControlador
    const ciudad= req.body.ciudad;
    const id= await pool.query('SELECT codigo FROM ciudades WHERE nombre =?',ciudad);
    JSON.stringify(id);
-   const codigociudad= id[0].codigo;
+   const codigociudades= id[0].codigo;
+   console.log(codigociudades);
    const cedula = req.body.cedula;
    const ruc = req.body.ruc;
    const razonsocial = req.body.razonsocial;
    const fechanacimiento = req.body.fechanacimiento;
    const direccion =  req.body.direccion;
    const telefono =  req.body.telefono;
-   const values={cedula,ruc,razonsocial,fechanacimiento,direccion,telefono,codigociudad};
+   const values={cedula,ruc,razonsocial,fechanacimiento,direccion,telefono,codigociudades};
    await pool.query('INSERT INTO clientes  SET ?',values);
     res.json({message:"el cliente  fue guardado"});
   }
@@ -63,7 +64,7 @@ class ClienteControlador
 
    public async listarCiudad (req:Request,res:Response){
    
-    const ciudad = await pool.query('SELECT * FROM ciudades');
+    const ciudad = await pool.query('SELECT nombre FROM ciudades');
     res.json(ciudad); 
   } 
 }

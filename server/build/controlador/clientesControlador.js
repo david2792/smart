@@ -35,14 +35,15 @@ class ClienteControlador {
             const ciudad = req.body.ciudad;
             const id = yield base_datos_1.default.query('SELECT codigo FROM ciudades WHERE nombre =?', ciudad);
             JSON.stringify(id);
-            const codigociudad = id[0].codigo;
+            const codigociudades = id[0].codigo;
+            console.log(codigociudades);
             const cedula = req.body.cedula;
             const ruc = req.body.ruc;
             const razonsocial = req.body.razonsocial;
             const fechanacimiento = req.body.fechanacimiento;
             const direccion = req.body.direccion;
             const telefono = req.body.telefono;
-            const values = { cedula, ruc, razonsocial, fechanacimiento, direccion, telefono, codigociudad };
+            const values = { cedula, ruc, razonsocial, fechanacimiento, direccion, telefono, codigociudades };
             yield base_datos_1.default.query('INSERT INTO clientes  SET ?', values);
             res.json({ message: "el cliente  fue guardado" });
         });
@@ -74,7 +75,7 @@ class ClienteControlador {
     }
     listarCiudad(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const ciudad = yield base_datos_1.default.query('SELECT * FROM ciudades');
+            const ciudad = yield base_datos_1.default.query('SELECT nombre FROM ciudades');
             res.json(ciudad);
         });
     }

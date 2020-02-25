@@ -29,6 +29,7 @@ import { PaginaBienvenidaComponent } from './componentes/inicio/pantalla-princip
 import { EmpresasFormularioComponent } from './componentes/referenciales-empresas/empresas-formulario/empresas-formulario.component';
 import { EmpresasListaComponent } from './componentes/referenciales-empresas/empresas-lista/empresas-lista.component';
 import { SucursalesFormularioComponent } from './componentes/referenciales-empresas/sucursales-formulario/sucursales-formulario.component';
+import { ClientesFormularioComponent } from './componentes/referenciales-personas/clientes-formulario/clientes-formulario.component';
 
 
 const routes: Routes = [
@@ -157,8 +158,11 @@ const routes: Routes = [
       path: 'sucursales/agregar',
       component:SucursalesFormularioComponent
     },
+    {
+      path: 'clientes/agregar',
+      component:ClientesFormularioComponent
+    },
     
-  
   ]
 },
 {

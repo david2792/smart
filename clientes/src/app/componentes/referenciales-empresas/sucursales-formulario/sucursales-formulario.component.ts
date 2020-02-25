@@ -20,8 +20,8 @@ interface Empresa {
 
 export class SucursalesFormularioComponent implements OnInit {
   sucursal: Sucursal={
-    codigosucursal:0,
-    codigo:'',
+    codigo:0,
+    codigoempresa:'',
     nombre:'',
     telefono:'',
     empresa:''
@@ -59,7 +59,7 @@ empresa:any=[];
     }
   }
 
-  //Autocompletado Categoria
+  //Autocompletado empresa
   private _filter(razonsocial: string): Empresa[] {
     const filterValue = razonsocial.toLowerCase();
 
@@ -104,7 +104,7 @@ actualizarSucursal(){
   this.sucursal.nombre=this.sucursalformulario.get('nombre').value;
   this.sucursal.telefono=this.sucursalformulario.get('telefono').value;
   this.sucursal.empresa=this.sucursalformulario.get('empresa').value;
-  this.sucursalServicio.actualizarSucursal(this.sucursal.codigosucursal, this.sucursal)
+  this.sucursalServicio.actualizarSucursal(this.sucursal.codigo, this.sucursal)
   .subscribe(
     res=>{
       console.log(res);

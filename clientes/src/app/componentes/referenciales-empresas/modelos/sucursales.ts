@@ -1,6 +1,6 @@
 export interface Sucursal{
-    codigosucursal?:number;
-    codigo:string;
+    codigo?:number;
+    codigoempresa:string;
     nombre:string;
     telefono:string;
     empresa:string;

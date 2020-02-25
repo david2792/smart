@@ -20,6 +20,7 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { HeaderComponent } from './componentes/inicio/pantalla-principal/header/header.component';
 import { PaginaBienvenidaComponent } from './componentes/inicio/pantalla-principal/pagina-bienvenida/pagina-bienvenida.component';
 import { EmpresasModulos } from './componentes/referenciales-empresas/empresas.modulos';
+import { PersonasModulos } from './componentes/referenciales-personas/personas.modulos';
 
 
 @NgModule({
@@ -33,7 +34,7 @@ import { EmpresasModulos } from './componentes/referenciales-empresas/empresas.m
     RegistrarUsuarioComponent,
     HeaderComponent,
     PaginaBienvenidaComponent,
-  
+
     
     
    
@@ -48,7 +49,8 @@ import { EmpresasModulos } from './componentes/referenciales-empresas/empresas.m
     NgxPaginationModule,
     BrowserAnimationsModule,
     MatNativeDateModule,
-    EmpresasModulos
+    EmpresasModulos,
+    PersonasModulos
   ],
   providers: [],
   bootstrap: [AppComponent]
