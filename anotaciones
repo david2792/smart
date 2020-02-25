@@ -22,6 +22,7 @@ el servicio
 
 npm i angular-ng-autocomplete
 
+https://medium.com/devschile/m%C3%BAltiples-versiones-de-node-con-nvm-63b2ac715c38 (instalar node v13.0.1)
 
 or create a new repository on the command line
 echo "# smart" >> README.md
