@@ -30,6 +30,7 @@ import { EmpresasFormularioComponent } from './componentes/referenciales-empresa
 import { EmpresasListaComponent } from './componentes/referenciales-empresas/empresas-lista/empresas-lista.component';
 import { SucursalesFormularioComponent } from './componentes/referenciales-empresas/sucursales-formulario/sucursales-formulario.component';
 import { ClientesFormularioComponent } from './componentes/referenciales-personas/clientes-formulario/clientes-formulario.component';
+import { ClientesListaComponent } from './componentes/referenciales-personas/clientes-lista/clientes-lista.component';
 
 
 const routes: Routes = [
@@ -162,7 +163,10 @@ const routes: Routes = [
       path: 'clientes/agregar',
       component:ClientesFormularioComponent
     },
-    
+    {
+      path: 'clientes',
+      component:ClientesListaComponent
+    }
   ]
 },
 {
