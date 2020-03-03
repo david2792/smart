@@ -2,9 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
-
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductosModulos } from './componentes/referenciales-productos/productos.modulos';
@@ -15,14 +12,13 @@ import { ContenidoComponent } from './componentes/inicio/pantalla-principal/cont
 import { PaginasComponent } from './componentes/inicio/pantalla-principal/paginas/paginas.component';
 import { RegistrarUsuarioComponent } from './componentes/inicio/login/registrar-usuario/registrar-usuario.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import {MatNativeDateModule} from '@angular/material/core';
 import { HeaderComponent } from './componentes/inicio/pantalla-principal/header/header.component';
 import { PaginaBienvenidaComponent } from './componentes/inicio/pantalla-principal/pagina-bienvenida/pagina-bienvenida.component';
 import { EmpresasModulos } from './componentes/referenciales-empresas/empresas.modulos';
 import { PersonasModulos } from './componentes/referenciales-personas/personas.modulos';
-
-
+import {PresupuestoModulos}from './componentes/administrati';
+import { PresupuestoFormularioComponent } from './componentes/administrativo-presupuesto/presupuesto-formulario/presupuesto-formulario.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,11 +30,8 @@ import { PersonasModulos } from './componentes/referenciales-personas/personas.m
     RegistrarUsuarioComponent,
     HeaderComponent,
     PaginaBienvenidaComponent,
-
+    PresupuestoFormularioComponent,
     
-    
-   
-
       
   ],
   imports: [
@@ -50,7 +43,8 @@ import { PersonasModulos } from './componentes/referenciales-personas/personas.m
     BrowserAnimationsModule,
     MatNativeDateModule,
     EmpresasModulos,
-    PersonasModulos
+    PersonasModulos,
+    PresupuestoModulos
   ],
   providers: [],
   bootstrap: [AppComponent]
