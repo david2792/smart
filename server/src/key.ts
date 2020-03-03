@@ -3,8 +3,8 @@ export default
     database:
     {
         host: 'localhost',
-        user: 'root',
-        password: '12345',
+        user: 'manager',
+        password: 'developer',
         database: 'smartsystems'
     }
 }
