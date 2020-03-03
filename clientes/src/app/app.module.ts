@@ -18,7 +18,6 @@ import { HeaderComponent } from './componentes/inicio/pantalla-principal/header/
 import { PaginaBienvenidaComponent } from './componentes/inicio/pantalla-principal/pagina-bienvenida/pagina-bienvenida.component';
 import { EmpresasModulos } from './componentes/referenciales-empresas/empresas.modulos';
 import { PersonasModulos } from './componentes/referenciales-personas/personas.modulos';
-
 @NgModule({
   declarations: [
     AppComponent,
