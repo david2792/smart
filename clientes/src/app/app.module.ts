@@ -2,9 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination';
-
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductosModulos } from './componentes/referenciales-productos/productos.modulos';
@@ -22,7 +19,6 @@ import { PaginaBienvenidaComponent } from './componentes/inicio/pantalla-princip
 import { EmpresasModulos } from './componentes/referenciales-empresas/empresas.modulos';
 import { PersonasModulos } from './componentes/referenciales-personas/personas.modulos';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,11 +30,7 @@ import { PersonasModulos } from './componentes/referenciales-personas/personas.m
     RegistrarUsuarioComponent,
     HeaderComponent,
     PaginaBienvenidaComponent,
-
     
-    
-   
-
       
   ],
   imports: [
@@ -50,7 +42,8 @@ import { PersonasModulos } from './componentes/referenciales-personas/personas.m
     BrowserAnimationsModule,
     MatNativeDateModule,
     EmpresasModulos,
-    PersonasModulos
+    PersonasModulos,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
