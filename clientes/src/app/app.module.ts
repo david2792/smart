@@ -17,8 +17,6 @@ import { HeaderComponent } from './componentes/inicio/pantalla-principal/header/
 import { PaginaBienvenidaComponent } from './componentes/inicio/pantalla-principal/pagina-bienvenida/pagina-bienvenida.component';
 import { EmpresasModulos } from './componentes/referenciales-empresas/empresas.modulos';
 import { PersonasModulos } from './componentes/referenciales-personas/personas.modulos';
-import {PresupuestoModulos}from './componentes/administrati';
-import { PresupuestoFormularioComponent } from './componentes/administrativo-presupuesto/presupuesto-formulario/presupuesto-formulario.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +27,7 @@ import { PresupuestoFormularioComponent } from './componentes/administrativo-pre
     PaginasComponent,
     RegistrarUsuarioComponent,
     HeaderComponent,
-    PaginaBienvenidaComponent,
-    PresupuestoFormularioComponent,
-    
+    PaginaBienvenidaComponent
       
   ],
   imports: [
@@ -43,8 +39,7 @@ import { PresupuestoFormularioComponent } from './componentes/administrativo-pre
     BrowserAnimationsModule,
     MatNativeDateModule,
     EmpresasModulos,
-    PersonasModulos,
-    PresupuestoModulos
+    PersonasModulos
   ],
   providers: [],
   bootstrap: [AppComponent]
