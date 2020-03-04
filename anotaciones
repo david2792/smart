@@ -33,3 +33,8 @@ git remote add origin https://github.com/david2792/smart.git
 git push -u origin master
 …or push an existing repository from the command lin
 git push -u origin master
+
+PYTHON
+sudo apt install python-dev default-libmysqlclient-dev libssl-dev
+pip3 install flask flask-mysqldb
+sudo pip3 install flask-mysqldb

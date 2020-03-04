@@ -17,7 +17,7 @@ import { HeaderComponent } from './componentes/inicio/pantalla-principal/header/
 import { PaginaBienvenidaComponent } from './componentes/inicio/pantalla-principal/pagina-bienvenida/pagina-bienvenida.component';
 import { EmpresasModulos } from './componentes/referenciales-empresas/empresas.modulos';
 import { PersonasModulos } from './componentes/referenciales-personas/personas.modulos';
-import { PresupuestoFormularioComponent } from './componentes/administrativo-presupuesto/presupuesto-formulario/presupuesto-formulario.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +29,7 @@ import { PresupuestoFormularioComponent } from './componentes/administrativo-pre
     RegistrarUsuarioComponent,
     HeaderComponent,
     PaginaBienvenidaComponent,
-    PresupuestoFormularioComponent
+  
       
   ],
   imports: [
