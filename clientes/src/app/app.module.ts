@@ -17,6 +17,7 @@ import { HeaderComponent } from './componentes/inicio/pantalla-principal/header/
 import { PaginaBienvenidaComponent } from './componentes/inicio/pantalla-principal/pagina-bienvenida/pagina-bienvenida.component';
 import { EmpresasModulos } from './componentes/referenciales-empresas/empresas.modulos';
 import { PersonasModulos } from './componentes/referenciales-personas/personas.modulos';
+import { ReferencialesFacturasModulos } from './componentes/referenciales-facturas/referencialesfacturas.modulos';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { PersonasModulos } from './componentes/referenciales-personas/personas.m
     BrowserAnimationsModule,
     MatNativeDateModule,
     EmpresasModulos,
-    PersonasModulos
+    PersonasModulos,
+    ReferencialesFacturasModulos
   ],
   providers: [],
   bootstrap: [AppComponent]

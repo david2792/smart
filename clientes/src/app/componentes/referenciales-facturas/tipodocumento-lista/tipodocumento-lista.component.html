@@ -1,1 +1,41 @@
-<p>tipodocumento-lista works!</p>
+<div class="col-lg-12">
+  <div class="card">
+      <div class="card-body">
+          <h4 class="card-title">Lista de Marcas</h4>
+         
+          <div class="table-responsive">
+             
+              <table class="table color-table inverse-table">
+                  <thead>
+                      <tr>
+                        
+                          <th>Codigo</th>
+                          <th>Nombre</th>
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let tipodocumento of tipodocumentos ">
+                          <td>{{tipodocumento[0]}}</td>
+                          <td>{{tipodocumento[1]}}</td>
+                          <td>
+                              <button [routerLink]="['/marcas/editar',tipodocumento.codigo]"   class="btn btn-primary">
+                              <i  class="fa fa-edit"></i>
+                            </button>
+
+                             
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              <div class="text-right">
+                  <button routerLink="/marcas/agregar" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                  <i class="fa fa-plus"></i> 
+                  Crear Marca
+                </button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div> 

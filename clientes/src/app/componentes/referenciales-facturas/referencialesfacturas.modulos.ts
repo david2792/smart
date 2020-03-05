@@ -7,12 +7,10 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { MatNativeDateModule } from '@angular/material/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { DemoMaterialModule } from '../inicio/pantalla-principal/material-module';
-
-
-
+import{TipodocumentoListaComponent} from './tipodocumento-lista/tipodocumento-lista.component'
 @NgModule({
     declarations:[
-        TipodocumentoListaComponent
+       TipodocumentoListaComponent
     ],
     exports:[ 
      
