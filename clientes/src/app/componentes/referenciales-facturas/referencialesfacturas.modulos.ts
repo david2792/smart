@@ -8,9 +8,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { DemoMaterialModule } from '../inicio/pantalla-principal/material-module';
 import{TipodocumentoListaComponent} from './tipodocumento-lista/tipodocumento-lista.component'
+import { TipodocumentoFormularioComponent } from './tipodocumento-formulario/tipodocumento-formulario.component';
 @NgModule({
     declarations:[
-       TipodocumentoListaComponent
+       TipodocumentoListaComponent,
+       TipodocumentoFormularioComponent
     ],
     exports:[ 
      

@@ -11,14 +11,14 @@ table {
     padding: 0%;
   }
   th{
-    font-size:0.58em;
+    font-size:0.78em;
     text-align: center;
     background-color:rgba(7, 53, 45, 0.333);
     
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 td{
-    font-size:0.58em;
+    font-size:0.68em;
     text-align: center;
   
 }

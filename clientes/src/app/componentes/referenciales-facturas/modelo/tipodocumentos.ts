@@ -1,4 +1,4 @@
-export class TipoDocumentos 
+export interface TipoDocumentos 
 { 
     codigo?: number;
     descripcion: string

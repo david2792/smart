@@ -29,7 +29,7 @@ import { ReferencialesFacturasModulos } from './componentes/referenciales-factur
     PaginasComponent,
     RegistrarUsuarioComponent,
     HeaderComponent,
-    PaginaBienvenidaComponent,
+    PaginaBienvenidaComponent
   
       
   ],

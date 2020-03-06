@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 
 import{ Unidad} from '../../componentes/referenciales-productos/modelos/unidadMedida'
-import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,6 @@ export class UnidadService {
   }
    
   actualizarUnidad(id:number, actualizarUnidad:Unidad){
-    return this.http.put(`${this.API_URI}/unidades/${id}`,actualizarUnidad);
+    return this.http.put(`${this.API_URI}/tipodocumentos/${id}`,actualizarUnidad);
   }
 }

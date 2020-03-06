@@ -5,6 +5,6 @@ exports.default = {
         host: 'localhost',
         user: 'manager',
         password: 'developer',
-        database: 'smartsystems'
+        database: 'smart_desarrollo'
     }
 };

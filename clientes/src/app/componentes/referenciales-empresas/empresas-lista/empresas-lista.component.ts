@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EmpresasService } from 'src/app/servicios/servicios-referenciales/empresas.service';
 import { MatPaginator } from '@angular/material/paginator';
-import { tap } from 'rxjs/operators';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
-import { ElementSchemaRegistry } from '@angular/compiler';
+
 
 export interface Empresa {
   codigo: number;
@@ -23,6 +22,7 @@ export interface Empresa {
 
 
 export class EmpresasListaComponent implements OnInit {
+  
   ELEMENT_DATA:Empresa[] = [];
   displayedColumns: string[] = ['codigo','ruc','razonsocial','nombrefantasia','web','accion'];
   dataSource = new MatTableDataSource<Empresa>();

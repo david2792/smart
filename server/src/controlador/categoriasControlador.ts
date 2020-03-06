@@ -1,6 +1,5 @@
 import {Request, Response} from 'express';
 import pool from '../base_datos';
-import { createPool } from 'promise-mysql';
 
 class CategoriaControlador
 {

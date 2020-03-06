@@ -18,6 +18,7 @@ import ciudadRutas from './rutas/ciudadesRutas';
 import clienteRutas from './rutas/ clientesRutas';
 import usuarioRutas from './rutas/usuariosRutas';
 import nivelRutas from './rutas/nivelUsuariosRutas';
+import tipoDocumentosRutas from './rutas/tipoDocumentosRutas'
 class Server
 {
    public app: Application;
@@ -53,6 +54,7 @@ class Server
         this.app.use('/api/clientes',clienteRutas);
         this.app.use('/api/usuarios',usuarioRutas);
         this.app.use('/api/nivelusuarios',nivelRutas);
+        this.app.use('/api/tipodocumentos',tipoDocumentosRutas)
     }
     iniciar():void
     {
