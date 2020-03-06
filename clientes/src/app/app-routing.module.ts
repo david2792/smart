@@ -177,6 +177,11 @@ const routes: Routes = [
     {
       path:'tipodocumentos/agregar',
       component:TipodocumentoFormularioComponent
+    },
+    
+    {
+      path:'tipodocumentos/editar/:id',
+      component:TipodocumentoFormularioComponent
     }
   ]
 },

@@ -45,6 +45,19 @@ export class TipodocumentoListaComponent implements OnInit {
       err => console.log(err)
     );
   }
+  eliminarTipoDocumento(codigo:number){
+    const confirmacion = window.confirm("Desea Eliminar El Tipo Documento?");
+    if(confirmacion){
+      this.tipodocumentoservicio.eliminarTipoDocumento(codigo).subscribe(
+        res=>{
+          console.log(res);
+          this.listarTipoDocumento();
+        },
+        err => console.log(err)
+      )
+    }
+
+ }  
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;

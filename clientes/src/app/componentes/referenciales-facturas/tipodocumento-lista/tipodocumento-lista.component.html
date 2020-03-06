@@ -22,7 +22,11 @@
                     <th mat-header-cell *matHeaderCellDef>Acciones </th>
                     <td mat-cell *matCellDef = "let row"> <button [routerLink]="['/tipodocumentos/editar',row.codigo]"  class="btn btn-primary">
                         <i  class="fa fa-edit"></i>
-                      </button></td>
+                      </button>
+                      <button (click)="eliminarTipoDocumento(row.codigo)" class="btn btn-danger">
+                        <i class="fa fa-trash-o"></i>
+                      </button>
+                    </td>
                  </ng-container>
                  
                  
@@ -34,7 +38,7 @@
              <mat-paginator [pageSize]="4" [pageSizeOptions]="[4, 6, 10, 20]">
             </mat-paginator>
              <div class="text-right">
-                 <button routerLink="/empresas/agregar" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
+                 <button routerLink="/tipodocumentos/agregar" type="button" class="btn waves-effect waves-light btn-rounded btn-primary">
                  <i class="fa fa-plus"></i> 
                  Crear Tipo Documento
                </button>

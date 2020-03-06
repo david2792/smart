@@ -8,15 +8,13 @@
                         <input matInput placeholder="Ingrese el Codigo " formControlName="descripcion">
                       </mat-form-field>
                       <div class="text-xs-right">
-                        <button type="submit"  [disabled]="tipodocumentoformulario.invalid"  class="btn btn-primary" (click)="editar ? actualizarSucursal():nuevoTipodocumento()" type="submit" >Guardar</button>
-                        <button type="reset" class="btn btn-inverse">Cancelar</button>
+                        <!-- <button type="submit"  [disabled]="tipodocumentoformulario.invalid"  class="btn btn-primary" (click)="editar ? actualizarTipoDocumento():nuevoTipoDocumento()" type="submit" >Guardar</button> -->
+                        <button type="submit" [disabled]="tipodocumentoformulario.invalid" class="btn btn-info btn-circle btn-lg" (click)="editar ? actualizarTipoDocumento():nuevoTipoDocumento()" ><i class="fa fa-check"></i> </button>
+                        <button type="reset" class="btn btn-danger btn-circle btn-lg"><i class="fa fa-times"></i> </button>
+                        <!-- <button type="reset"  class="btn btn-inverse">Cancelar</button> -->
                     </div>
-
                     </form>
-
             </div>
         </div>
     </div>
   </div>
-  
-  

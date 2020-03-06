@@ -18,13 +18,13 @@ export class TipodocumentoFormularioComponent implements OnInit {
   editar: boolean = false;
 
   tipodocumentoformulario: FormGroup = this._formBuilder.group({
-    codigo:new FormControl('',Validators.required),
     descripcion:new FormControl('',Validators.required),
   });
 
   constructor(private _formBuilder: FormBuilder,private tipodocumentoServicio: TiposdocumentosService,private router: Router, private activedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    
     const params = this.activedRoute.snapshot.params;
     if(params.id){
         this.tipodocumentoServicio.getUnTipoDocumento(params.id).subscribe(
@@ -39,18 +39,17 @@ export class TipodocumentoFormularioComponent implements OnInit {
     }
   }
 
-  nuevoTipoDocumento(){
+  nuevoTipoDocumento(){    
     delete this.tipodocumento.codigo;
     this.tipodocumento.descripcion = this.tipodocumentoformulario.get('descripcion').value;
     this.tipodocumentoServicio.guardarTipoDocumento(this.tipodocumento).subscribe(
       res=>{
-        console.log(res);
         this.router.navigate(['/tipodocumentos'])
       },
       err=> console.log(err)
     )
   }
-  actualizarSucursal(){
+  actualizarTipoDocumento(){
     this.tipodocumento.codigo=this.tipodocumentoformulario.get('descripcion').value;
     this.tipodocumentoServicio.actualizarTipoDocumento(this.tipodocumento.codigo, this.tipodocumento)
     .subscribe(
