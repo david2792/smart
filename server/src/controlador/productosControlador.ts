@@ -27,7 +27,7 @@ class ProductoControlador
   const codigo = codigomaximo[0].codigo;
   //console.log(JSON.stringify());
   const categoria= req.body.categoria;
-  console.log("dfg"+categoria);
+  console.log(categoria);
   const id= await pool.query('SELECT codigo FROM categorias WHERE nombre =?',categoria);
   JSON.stringify(id);//CONVIERTE LA CONSULTA A UN JSON
   //se capturan los codigos

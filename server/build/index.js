@@ -23,6 +23,7 @@ const _clientesRutas_1 = __importDefault(require("./rutas/ clientesRutas"));
 const usuariosRutas_1 = __importDefault(require("./rutas/usuariosRutas"));
 const nivelUsuariosRutas_1 = __importDefault(require("./rutas/nivelUsuariosRutas"));
 const tipoDocumentosRutas_1 = __importDefault(require("./rutas/tipoDocumentosRutas"));
+const presupuestosRutas_1 = __importDefault(require("./rutas/administrativoPresupuesto/presupuestosRutas"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -54,6 +55,7 @@ class Server {
         this.app.use('/api/usuarios', usuariosRutas_1.default);
         this.app.use('/api/nivelusuarios', nivelUsuariosRutas_1.default);
         this.app.use('/api/tipodocumentos', tipoDocumentosRutas_1.default);
+        this.app.use('/api/presupuestos', presupuestosRutas_1.default);
     }
     iniciar() {
         this.app.listen(this.app.get('port'), () => {

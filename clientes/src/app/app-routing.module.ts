@@ -33,6 +33,7 @@ import { ClientesFormularioComponent } from './componentes/referenciales-persona
 import { ClientesListaComponent } from './componentes/referenciales-personas/clientes-lista/clientes-lista.component';
 import { TipodocumentoListaComponent } from './componentes/referenciales-facturas/tipodocumento-lista/tipodocumento-lista.component';
 import { TipodocumentoFormularioComponent } from './componentes/referenciales-facturas/tipodocumento-formulario/tipodocumento-formulario.component';
+import { PresupuestoFormularioComponent } from './componentes/administrativo-presupuesto/presupuesto-formulario/presupuesto-formulario.component';
 
 const routes: Routes = [
 
@@ -182,6 +183,11 @@ const routes: Routes = [
     {
       path:'tipodocumentos/editar/:id',
       component:TipodocumentoFormularioComponent
+    },
+    //administrativo presupuesto
+    {
+      path:'presupuesto/agregar',
+      component:PresupuestoFormularioComponent
     }
   ]
 },
