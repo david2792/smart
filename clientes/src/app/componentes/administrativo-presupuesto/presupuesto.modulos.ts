@@ -7,16 +7,20 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { MatNativeDateModule } from '@angular/material/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { DemoMaterialModule } from '../inicio/pantalla-principal/material-module';
-import {PresupuestoFormularioComponent} from '../administrativo-presupuesto/presupuesto-formulario/presupuesto-formulario.component'
+import {PresupuestoFormularioComponent} from '../administrativo-presupuesto/presupuesto-formulario/presupuesto-formulario.component';
+import { BuscatProductoComponent } from '../administrativo-presupuesto/buscat-producto/buscat-producto.component';
+
 @NgModule({
     declarations:[
         PresupuestoFormularioComponent,
+        BuscatProductoComponent
        
     ],
     exports:[ 
      
       
     ],
+    entryComponents:[BuscatProductoComponent],
     imports: [
         HttpClientModule,
         BrowserModule,

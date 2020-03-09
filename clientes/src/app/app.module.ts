@@ -18,6 +18,8 @@ import { PaginaBienvenidaComponent } from './componentes/inicio/pantalla-princip
 import { EmpresasModulos } from './componentes/referenciales-empresas/empresas.modulos';
 import { PersonasModulos } from './componentes/referenciales-personas/personas.modulos';
 import { ReferencialesFacturasModulos } from './componentes/referenciales-facturas/referencialesfacturas.modulos';
+import { AdministrativoPresupuesto } from './componentes/administrativo-presupuesto/presupuesto.modulos';
+
 
 @NgModule({
   declarations: [
@@ -29,10 +31,12 @@ import { ReferencialesFacturasModulos } from './componentes/referenciales-factur
     PaginasComponent,
     RegistrarUsuarioComponent,
     HeaderComponent,
-    PaginaBienvenidaComponent
+    PaginaBienvenidaComponent,
+    
   
       
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -43,7 +47,8 @@ import { ReferencialesFacturasModulos } from './componentes/referenciales-factur
     MatNativeDateModule,
     EmpresasModulos,
     PersonasModulos,
-    ReferencialesFacturasModulos
+    ReferencialesFacturasModulos,
+    AdministrativoPresupuesto
   ],
   providers: [],
   bootstrap: [AppComponent]
