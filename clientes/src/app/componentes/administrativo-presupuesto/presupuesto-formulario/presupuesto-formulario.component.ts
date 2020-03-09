@@ -53,7 +53,7 @@ export class PresupuestoFormularioComponent implements OnInit {
     data = Object.assign( this.ELEMENT_DATA);
 
 
-  constructor(private _formBuilder: FormBuilder)  { }
+  constructor(private _formBuilder: FormBuilder, private dialog:MatDialog)  { }
 
   ngOnInit() {
     
@@ -101,6 +101,9 @@ export class PresupuestoFormularioComponent implements OnInit {
   
   }
 // buscador producto
-
+openDialog(){
+  this.dialog.open(BuscatProductoComponent);
+  
+}
 // fin buscador
 }
