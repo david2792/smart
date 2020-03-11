@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import {Presupuesto} from '../../../componentes/administrativo-presupuesto/modelo/presupuesto'
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
@@ -15,6 +15,13 @@ export interface Transaction {
   subTotal:number
 }
 
+export class RecuperarProductos{
+  codigo:string;
+  descripcion:string;
+  precio:string;
+}
+
+
 
 @Component({
   selector: 'app-presupuesto-formulario',
@@ -26,6 +33,8 @@ export interface Transaction {
 
 
 export class PresupuestoFormularioComponent implements OnInit {
+  recuperarProducto: RecuperarProductos[]=[];
+@ViewChild(BuscatProductoComponent,{ static: true }) hijo: BuscatProductoComponent;
   tipodocumento: Presupuesto={
     numero: 0,
     fecha:'',
@@ -51,12 +60,15 @@ export class PresupuestoFormularioComponent implements OnInit {
     transactions: Transaction[] = [];
     selection = new SelectionModel<Transaction>(true, []);
     data = Object.assign( this.ELEMENT_DATA);
-
+    valores:any;
 
   constructor(private _formBuilder: FormBuilder, private dialog:MatDialog)  { }
 
   ngOnInit() {
     
+  }
+  enviarMensaje(){
+    this.valores= this.hijo.SelectedRows();
   }
  
   isAllSelected() {
@@ -102,8 +114,7 @@ export class PresupuestoFormularioComponent implements OnInit {
   }
 // buscador producto
 openDialog(){
-  this.dialog.open(BuscatProductoComponent);
-  
+  this.dialog.open(BuscatProductoComponent)
 }
 // fin buscador
 }

@@ -17,6 +17,7 @@ class PresupuestoRutas
        this.router.put('/:id',presupuestoControlador.actualiar);
        this.router.get('/clientes',presupuestoControlador.listarCliente);
        this.router.get('/productos',presupuestoControlador.listarProducto);
+       this.router.get('/productosvista',presupuestoControlador.listarProductoVista);
    }
 }
 

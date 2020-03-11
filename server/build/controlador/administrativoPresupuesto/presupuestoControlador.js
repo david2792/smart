@@ -95,5 +95,11 @@ class PresupuestoControlador {
             res.json(familia);
         });
     }
+    listarProductoVista(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const productos = yield base_datos_1.default.query('SELECT codigoproducto,codigobarra,descripcion,preciocompra,precioventaminorista FROM vproductos');
+            res.json(productos);
+        });
+    }
 }
 exports.presupuestoControlador = new PresupuestoControlador();

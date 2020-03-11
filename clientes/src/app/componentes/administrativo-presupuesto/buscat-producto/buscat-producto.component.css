@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+  }
+  mat-form-field{
+    width: 100%;
+  }
+  div{
+    margin: 0%;
+    padding: 0%;
+  }
+  th{
+    font-size:0.58em;
+    text-align: left;
+   /* / background-color:rgba(7, 53, 45, 0.333); */
+    
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+td{
+    font-size:0.58em;
+    text-align: left;
+  
+}

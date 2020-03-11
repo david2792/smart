@@ -87,6 +87,11 @@ class PresupuestoControlador
     const familia = await pool.query('SELECT descripcion FROM productos');
     res.json(familia);
   } 
+
+  public async listarProductoVista (req:Request,res:Response){
+    const productos = await pool.query('SELECT codigoproducto,codigobarra,descripcion,preciocompra,precioventaminorista FROM vproductos');
+    res.json(productos);
+  }
 }
 
 export const presupuestoControlador = new PresupuestoControlador();

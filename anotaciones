@@ -38,3 +38,7 @@ PYTHON
 sudo apt install python-dev default-libmysqlclient-dev libssl-dev
 pip3 install flask flask-mysqldb
 sudo pip3 install flask-mysqldb
+
+chmod 777 -R CarpetaQueContieneElProyecto
+
+sudo ng serve
