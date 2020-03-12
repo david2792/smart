@@ -8,19 +8,18 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { DemoMaterialModule } from '../inicio/pantalla-principal/material-module';
 import {PresupuestoFormularioComponent} from '../administrativo-presupuesto/presupuesto-formulario/presupuesto-formulario.component';
-import { BuscatProductoComponent } from '../administrativo-presupuesto/buscat-producto/buscat-producto.component';
-
+import { BuscadorProductoComponent } from './buscador-producto/buscador-producto.component';
 @NgModule({
     declarations:[
         PresupuestoFormularioComponent,
-        BuscatProductoComponent
+        BuscadorProductoComponent
        
     ],
     exports:[ 
      
       
     ],
-    entryComponents:[BuscatProductoComponent],
+    entryComponents:[BuscadorProductoComponent],
     imports: [
         HttpClientModule,
         BrowserModule,

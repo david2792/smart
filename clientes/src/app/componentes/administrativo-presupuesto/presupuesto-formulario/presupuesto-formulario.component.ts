@@ -1,11 +1,14 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, Input, EventEmitter, Output } from '@angular/core';
 import {Presupuesto} from '../../../componentes/administrativo-presupuesto/modelo/presupuesto'
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-import { MatDialog} from '@angular/material/dialog';
-import { BuscatProductoComponent } from '../buscat-producto/buscat-producto.component';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { PresupuestosService } from 'src/app/servicios/presupuestos/presupuestos.service';
+import { BuscadorProductoComponent } from '../buscador-producto/buscador-producto.component';
+
+
+
 
 export interface Transaction {
   cod: string;
@@ -16,14 +19,14 @@ export interface Transaction {
   subTotal:number
 }
 
-export class RecuperarProductos{
-  codigo:string;
-  descripcion:string;
-  precio:string;
-}
 
-
-
+export interface Productos{
+  codigoproducto: string;
+  codigobarra: string;
+  descripcion: string;
+  preciocompra: string;
+  precioventaminorista: string;
+};
 @Component({
   selector: 'app-presupuesto-formulario',
   templateUrl: './presupuesto-formulario.component.html',
@@ -34,8 +37,7 @@ export class RecuperarProductos{
 
 
 export class PresupuestoFormularioComponent implements OnInit {
-  recuperarProducto: RecuperarProductos[]=[];
-@ViewChild(BuscatProductoComponent,{ static: true }) hijo: BuscatProductoComponent;
+
   tipodocumento: Presupuesto={
     numero: 0,
     fecha:'',
@@ -64,16 +66,15 @@ export class PresupuestoFormularioComponent implements OnInit {
     valores:any;
     editar: boolean = true;
     bandera=1;
+  
   constructor(private _formBuilder: FormBuilder, private dialog:MatDialog, private presupuestoServicio:PresupuestosService)  { }
 
   ngOnInit() {
-    
   }
-  productosDatos(){
-    const valor =this.hijo.descripcionproducto;
-    console.log(valor)
+
+  productosDatos(produ:string){
+    console.log(produ)
   }
- 
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
@@ -116,9 +117,25 @@ export class PresupuestoFormularioComponent implements OnInit {
   
   }
 // buscador producto
-openDialog(){
-  this.dialog.open(BuscatProductoComponent)
+openDialog1(){
+  this.dialog.open(BuscadorProductoComponent)
+}
+
+openDialog(): void {
+  const dialogRef = this.dialog.open(BuscadorProductoComponent, {
+  
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  });
+}
+
+// fin buscador
+
+
+
 
 }
-// fin buscador
-}
+
+

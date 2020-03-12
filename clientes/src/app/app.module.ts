@@ -20,7 +20,6 @@ import { PersonasModulos } from './componentes/referenciales-personas/personas.m
 import { ReferencialesFacturasModulos } from './componentes/referenciales-facturas/referencialesfacturas.modulos';
 import { AdministrativoPresupuesto } from './componentes/administrativo-presupuesto/presupuesto.modulos';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +30,7 @@ import { AdministrativoPresupuesto } from './componentes/administrativo-presupue
     PaginasComponent,
     RegistrarUsuarioComponent,
     HeaderComponent,
-    PaginaBienvenidaComponent,
+    PaginaBienvenidaComponent
     
   
       
