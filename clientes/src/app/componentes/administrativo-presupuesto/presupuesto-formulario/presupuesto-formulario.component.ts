@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog} from '@angular/material/dialog';
 import { BuscatProductoComponent } from '../buscat-producto/buscat-producto.component';
+import { PresupuestosService } from 'src/app/servicios/presupuestos/presupuestos.service';
 
 export interface Transaction {
   cod: string;
@@ -61,14 +62,16 @@ export class PresupuestoFormularioComponent implements OnInit {
     selection = new SelectionModel<Transaction>(true, []);
     data = Object.assign( this.ELEMENT_DATA);
     valores:any;
-
-  constructor(private _formBuilder: FormBuilder, private dialog:MatDialog)  { }
+    editar: boolean = true;
+    bandera=1;
+  constructor(private _formBuilder: FormBuilder, private dialog:MatDialog, private presupuestoServicio:PresupuestosService)  { }
 
   ngOnInit() {
     
   }
-  enviarMensaje(){
-    this.valores= this.hijo.SelectedRows();
+  productosDatos(){
+    const valor =this.hijo.descripcionproducto;
+    console.log(valor)
   }
  
   isAllSelected() {
@@ -115,6 +118,7 @@ export class PresupuestoFormularioComponent implements OnInit {
 // buscador producto
 openDialog(){
   this.dialog.open(BuscatProductoComponent)
+
 }
 // fin buscador
 }

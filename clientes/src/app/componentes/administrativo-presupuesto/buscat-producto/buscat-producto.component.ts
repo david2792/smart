@@ -29,8 +29,6 @@ export interface Transaction {
 
 
 export class BuscatProductoComponent implements OnInit {
-
-  
   ELEMENT_DATA:Productos[] = [];
   displayedColumns: string[] = ['select','codigoproducto','codigobarra','descripcion','preciocompra','precioventaminorista'];
   dataSource = new MatTableDataSource<Productos>();
@@ -43,7 +41,7 @@ export class BuscatProductoComponent implements OnInit {
     data = Object.assign( this.ELEMENT_DATA);
 
 
-
+  public descripcionproducto:any;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true })  sort: MatSort;
 
@@ -83,7 +81,8 @@ export class BuscatProductoComponent implements OnInit {
 
     this.selection.selected.forEach(item => {
       let index: number = this.data.findIndex(d => d === item);
-      return (JSON.stringify(item));
+      return this.descripcionproducto= item.descripcion;
+    
 
     });
     this.dialogRef.close();
