@@ -12,9 +12,9 @@
     <!-- fin autocompletado -->
         <mat-form-field class="example-full-width" id="codigo">
             <mat-label>Cod.Barra</mat-label>
-            <input type="text" matInput placeholder="Ingrese el Codigo"  (click)="productosDatos()" formControlName="codigo">
+            <input type="text" matInput placeholder="Ingrese el Codigo"   formControlName="codigoproducto">
         </mat-form-field>
-        <button type="reset" class="btn btn-danger" (click)="openDialog()"    ><i class="material-icons">search</i>
+        <button type="reset" class="btn btn-danger" (click)="abrirBuscadorProducto()"><i class="material-icons">search</i>
         </button>
         <!--  -->
         <mat-form-field class="example-full-width" id="descripcion" >
@@ -38,7 +38,7 @@
                 <input matInput placeholder="Descripcion" formControlName="cantidad">
             </mat-form-field>
         <!--  -->
-        <button type="reset" class="btn btn-success" > <i class="material-icons">add_circle_outline</i></button>
+        <button type="reset" class="btn btn-success" (click)="agregarDetalle()" > <i class="material-icons">add_circle_outline</i></button>
     <div class="example-container mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">
 

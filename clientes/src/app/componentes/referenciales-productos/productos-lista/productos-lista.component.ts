@@ -6,25 +6,17 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 
 export interface Productos{
-  codigoproducto: string;
-  categoria: string;
-  marca: string;
-  medida: string;
-  presentacion: string;
-  impuesto: string;
-  codigobarra: string;
-  descripcion: string;
-  cantidadpresentacion: string;
-  perecedero: string;
- deposito: string;
-  stockactual: string;
-  stockminimo: string;
-  stockmaximo: string;
-  
-  preciocompra: string;
-  precioventaminorista: string;
-  preciomayorista: string;
-  limitedescuento: string;
+  CodigoProducto: string;
+  CodigoBarra:string;
+  Descripcion:string;
+  Categoria:string;
+  Marca:string;
+  Impuesto:string;
+  PrecioCompra:string;
+  StockActual:string;
+  StockMinimo:string;
+  Deposito:string;
+
 };
 @Component({
   selector: 'app-productos-lista',
@@ -33,9 +25,7 @@ export interface Productos{
 })
 export class ProductosListaComponent implements OnInit {
   ELEMENT_DATA:Productos[] = [];
-  displayedColumns: string[] = ['codigoproducto','codigobarra','descripcion','preciocompra','precioventaminorista','preciomayorista'
-  ,'limitedescuento','stockactual','stockminimo','stockmaximo','cantidadpresentacion','categoria','marca',
-  'medida','presentacion','impuesto','deposito','accion'];
+  displayedColumns: string[] = ['codigoproducto','codigobarra','descripcion','categoria','marca','impuesto','preciocompra','stockactual','stockminimo','deposito','accion'];
   dataSource = new MatTableDataSource<Productos>();
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort,{ static: true })  sort: MatSort;
@@ -54,6 +44,7 @@ export class ProductosListaComponent implements OnInit {
     this.productoServicios.getProductos().subscribe(
       res=>{
         this.dataSource.data = res as Productos[];
+        console.log(this.dataSource.data);
       },
       err=>console.log(err)
     );

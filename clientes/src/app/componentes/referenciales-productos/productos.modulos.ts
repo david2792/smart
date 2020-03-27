@@ -33,8 +33,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { DemoMaterialModule } from '../inicio/pantalla-principal/material-module';
 import { ProductosListaComponent } from './productos-lista/productos-lista.component';
 import { BuscarProductoPipe } from '../../buscadores/referenciales/buscar-producto.pipe';
-
-
+import { ListaPrecioComponent } from './lista-precio/lista-precio.component';
 
 @NgModule({
     declarations:[
@@ -59,7 +58,7 @@ import { BuscarProductoPipe } from '../../buscadores/referenciales/buscar-produc
         BuscarpresentacionPipe,
         BuscarunidadPipe,
         BuscarProductoPipe,
-    
+        ListaPrecioComponent
     ],
     exports:[
        

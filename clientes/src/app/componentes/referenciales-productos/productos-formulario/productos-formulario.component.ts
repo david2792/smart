@@ -9,23 +9,19 @@ import {ActivatedRoute,Router} from '@angular/router';
 //buscadores Interface
 interface User {
   codigo:string;
-  nombre: string;
+  descripcion: string;
 }
 interface Marca{
   codigo:string;
-  nombre: string;
-}
-interface Medida{
-  codigo:string;
-  nombre: string;
-}
-interface Presentacion{
-  codigo:string;
-  descripcion: string;
+  Descripcion: string;
 }
 interface Impuesto{
   codigo:string;
-  nombre: string;
+  Descripcion: string;
+}
+interface Deposito{
+  codigo:string;
+  Nombre: string;
 }
 //fin inferface
 
@@ -37,31 +33,16 @@ interface Impuesto{
 export class ProductosFormularioComponent implements OnInit {
 
   productos: Productos={
-        codigoproducto:0,
-        categoria:'',
-        marca:'',
-        medida:'',
-        presentacion:'',
-        impuesto:'',
-        codigobarra:'',
-        descripcion:'',
-        cantidadpresentacion:'',
-        perecedero:'',
-       // imagen:'',
-       // estado:'',
-        
-       codigodeposito:0,
-      
-        stockactual:0,
-        stockminimo:0,
-        stockmaximo:0,
-        preciocompra:0,
-        precioventaminorista:0,
-        preciomayorista:0,
-        limitedescuento:0,
-        // fechacreacion:'',
-        // fechamodificacion:'',
-        // fechaultimaventa:'',
+        CodigoProducto:'',
+        Categoria:'',
+        Marca:'',
+        Impuesto:'',
+        CodigoBarra:'',
+        Descripcion:'',
+        Deposito:0,
+        StockActual:0,
+        StockMinimo:0,
+
   };
 
   isLinear = false;
@@ -82,20 +63,15 @@ optionsMarcas: Marca[] = [];
 filteredOptionsMarcas: Observable<Marca[]>;
 marca:any=[];
 //fin de buscador//
-//buscador de unidad de medida//
-optionsMedida: Medida[] = [];
-filteredOptionsMedida: Observable<Medida[]>;
-medida:any=[];
-//fin de buscador//
-//buscador de presentacion//
-optionsPresentacion: Presentacion[] = [];
-filteredOptionsPresentacion: Observable<Presentacion[]>;
-presentacion:any=[];
-//fin de buscador//
 //buscador de impuesto//
 optionsImpuesto: Impuesto[] = [];
 filteredOptionsImpuesto: Observable<Impuesto[]>;
 impuesto:any=[];
+//fin de buscador//
+//buscador de deposito//
+optionsDeposito: Deposito[] = [];
+filteredOptionsDeposito: Observable<Deposito[]>;
+deposito:any=[];
 //fin de buscador//
 public codigo='';
 public _data: any;
@@ -107,9 +83,8 @@ firstFormGroup: FormGroup = this._formBuilder.group({
   stateGroup: '',
   categoria:new FormControl('',Validators.required),
   marca:new FormControl('',Validators.required),
-  medida:new FormControl('',Validators.required),
-  presentacion:new FormControl('',Validators.required),
   impuesto:new FormControl('',Validators.required),
+  deposito:new FormControl('',Validators.required),
 
 });
 
@@ -118,25 +93,17 @@ firstFormGroup: FormGroup = this._formBuilder.group({
   ngOnInit() {
    this.buscarCategoria();
    this.buscarMarca();
-   this.buscarMedida();
-   this.buscarPresentacion();
    this.buscarImpuesto();
-
+   this.buscarDeposito();
+   this.getCodigo();
     this.secondFormGroup = this._formBuilder.group({  
       codigobarra:new FormControl('',Validators.required),
+      codigoproducto:new FormControl('',Validators.required),
       descripcion:new FormControl('',Validators.required),
-      cantidadpresentacion:new FormControl('',[Validators.pattern('^[0-9]+')]),
-      perecedero:new FormControl('',Validators.required)
-
     });
     this.tercerFromGroup = this._formBuilder.group({
         stockactual:new FormControl('',[Validators.pattern('^[0-9]+')]),
         stockminimo:new FormControl('',[Validators.pattern('^[0-9]+')]),
-        stockmaximo:new FormControl('',[Validators.pattern('^[0-9]+')]),
-        preciocompra:new FormControl('',[Validators.pattern('^[0-9.]+')]),
-        precioventaminorista:new FormControl('',[Validators.pattern('^[0-9.]+')]),
-        preciomayorista:new FormControl('',[Validators.pattern('^[0-9.]+')]),
-        limitedescuento:new FormControl('',[Validators.pattern('^[0-9.]+')]),
     });
 
     const params = this.activedRoute.snapshot.params;
@@ -145,54 +112,53 @@ firstFormGroup: FormGroup = this._formBuilder.group({
           res=>{
            //primer grupo
            this.productos=  res;
-           this.firstFormGroup.get('categoria').setValue(this.productos.categoria);
-           this.firstFormGroup.get('marca').setValue(this.productos.marca);
-           this.firstFormGroup.get('medida').setValue(this.productos.medida);
-           this.firstFormGroup.get('presentacion').setValue(this.productos.presentacion);
-           this.firstFormGroup.get('impuesto').setValue(this.productos.impuesto);
+           console.log(this.productos.Categoria);
+           this.firstFormGroup.get('categoria').setValue(this.productos.Categoria);
+           this.firstFormGroup.get('marca').setValue(this.productos.Marca);
+           this.firstFormGroup.get('impuesto').setValue(this.productos.Impuesto);
+           this.firstFormGroup.get('deposito').setValue(this.productos.Deposito);
            //segundo grupo
-           this.secondFormGroup.get('codigobarra').setValue(this.productos.codigobarra);
-           this.secondFormGroup.get('descripcion').setValue(this.productos.descripcion);
-           this.secondFormGroup.get('cantidadpresentacion').setValue(this.productos.cantidadpresentacion);
-           this.secondFormGroup.get('perecedero').setValue(this.productos.perecedero);
+           this.secondFormGroup.get('codigobarra').setValue(this.productos.CodigoBarra);
+           this.secondFormGroup.get('codigoproducto').setValue(this.productos.CodigoProducto);
+           this.secondFormGroup.get('descripcion').setValue(this.productos.Descripcion);
            //tercer grupo stock
-           this.tercerFromGroup.get('stockactual').setValue(this.productos.stockactual);
-           this.tercerFromGroup.get('stockminimo').setValue(this.productos.stockminimo);
-           this.tercerFromGroup.get('stockmaximo').setValue(this.productos.stockmaximo);
-           this.tercerFromGroup.get('preciocompra').setValue(this.productos.preciocompra);
-           this.tercerFromGroup.get('precioventaminorista').setValue(this.productos.precioventaminorista);
-           this.tercerFromGroup.get('preciomayorista').setValue(this.productos.preciomayorista);
-           this.tercerFromGroup.get('limitedescuento').setValue(this.productos.limitedescuento);
+           this.tercerFromGroup.get('stockactual').setValue(this.productos.StockActual);
+           this.tercerFromGroup.get('stockminimo').setValue(this.productos.StockMinimo);
            this.editar = true;
           }
         )
     }
   }
+  getCodigo(){
+    this.productoServicio.getCodigoProducto().subscribe( 
+      res=>{
+        const cod = res;
+        console.log(cod);
+        this.secondFormGroup.get('codigoproducto').setValue(cod);
+    })
+  }
   actualizarProducto(){
     const confirmacion = window.confirm("Desea Actualizar El Producto?");
     if(confirmacion==true){
-      this.productos.categoria=this.firstFormGroup.get('categoria').value;
-      this.productos.marca=this.firstFormGroup.get('marca').value;
-      this.productos.medida=this.firstFormGroup.get('medida').value;
-      this.productos.presentacion=this.firstFormGroup.get('presentacion').value;
-      this.productos.impuesto=this.firstFormGroup.get('impuesto').value;
-      this.productos.codigobarra = this.secondFormGroup.get('codigobarra').value;
-      this.productos.descripcion = this.secondFormGroup.get('descripcion').value;  
-      this.productos.cantidadpresentacion = this.secondFormGroup.get('cantidadpresentacion').value;  
-      this.productos.perecedero = this.secondFormGroup.get('perecedero').value;  
-      this.productos.codigodeposito = 1;
-      this.productos.stockactual = this.tercerFromGroup.get('stockactual').value;  
-      this.productos.stockminimo = this.tercerFromGroup.get('stockminimo').value;  
-      this.productos.stockmaximo = this.tercerFromGroup.get('stockmaximo').value;  
-      this.productos.preciocompra = this.tercerFromGroup.get('preciocompra').value;  
-      this.productos.precioventaminorista = this.tercerFromGroup.get('precioventaminorista').value;  
-      this.productos.preciomayorista = this.tercerFromGroup.get('preciomayorista').value;  
-      this.productos.limitedescuento = this.tercerFromGroup.get('limitedescuento').value;
-      this.productoServicio.actualizarProducto(this.productos.codigoproducto, this.productos)
+      this.productos.Categoria=this.firstFormGroup.get('categoria').value;
+      this.productos.Marca=this.firstFormGroup.get('marca').value;
+      this.productos.Impuesto=this.firstFormGroup.get('impuesto').value;
+      this.productos.Deposito = this.firstFormGroup.get('deposito').value;
+      this.productos.CodigoProducto = this.secondFormGroup.get('codigoproducto').value;
+      this.productos.CodigoBarra = this.secondFormGroup.get('codigobarra').value;
+      this.productos.Descripcion = this.secondFormGroup.get('descripcion').value;  
+      this.productos.StockActual = this.tercerFromGroup.get('stockactual').value;  
+      this.productos.StockMinimo = this.tercerFromGroup.get('stockminimo').value;  
+      this.productoServicio.actualizarProducto(this.productos.CodigoProducto, this.productos)
     .subscribe(
       res=>{
         console.log(res);
-        this.router.navigate(['/productos'])
+        const confirmacion = window.confirm("Desea Agregar La Lista De Precio?");
+        if(confirmacion==true){
+          this.router.navigate(['/listaprecio/',this.productos.CodigoProducto=this.secondFormGroup.get('codigoproducto').value]);
+        }else{
+          this.router.navigate(['/productos']);
+        }
       },
       err=> console.log(err)
 
@@ -200,31 +166,28 @@ firstFormGroup: FormGroup = this._formBuilder.group({
     }
   }
   nuevoProductos(){
-  delete this.productos.codigoproducto;
-  this.productos.categoria=this.firstFormGroup.get('categoria').value;
-  this.productos.marca=this.firstFormGroup.get('marca').value;
-  this.productos.medida=this.firstFormGroup.get('medida').value;
-  this.productos.presentacion=this.firstFormGroup.get('presentacion').value;
-  this.productos.impuesto=this.firstFormGroup.get('impuesto').value;
-  this.productos.codigobarra = this.secondFormGroup.get('codigobarra').value;
-  this.productos.descripcion = this.secondFormGroup.get('descripcion').value;  
-  this.productos.cantidadpresentacion = this.secondFormGroup.get('cantidadpresentacion').value;  
-  this.productos.perecedero = this.secondFormGroup.get('perecedero').value;  
-  this.productos.codigodeposito = 1;
-  this.productos.stockactual = this.tercerFromGroup.get('stockactual').value;  
-  this.productos.stockminimo = this.tercerFromGroup.get('stockminimo').value;  
-  this.productos.stockmaximo = this.tercerFromGroup.get('stockmaximo').value;  
-  this.productos.preciocompra = this.tercerFromGroup.get('preciocompra').value;  
-  this.productos.precioventaminorista = this.tercerFromGroup.get('precioventaminorista').value;  
-  this.productos.preciomayorista = this.tercerFromGroup.get('preciomayorista').value;  
-  this.productos.limitedescuento = this.tercerFromGroup.get('limitedescuento').value;  
-  
+  this.productos.CodigoProducto=this.secondFormGroup.get('codigoproducto').value;
+  this.productos.Categoria=this.firstFormGroup.get('categoria').value;
+  this.productos.Marca=this.firstFormGroup.get('marca').value;
+  this.productos.Impuesto=this.firstFormGroup.get('impuesto').value;
+  this.productos.Deposito=this.firstFormGroup.get('deposito').value;
+  this.productos.CodigoBarra = this.secondFormGroup.get('codigobarra').value;
+  this.productos.Descripcion = this.secondFormGroup.get('descripcion').value;    
+  this.productos.Deposito = this.firstFormGroup.get('deposito').value;
+  this.productos.StockActual = this.tercerFromGroup.get('stockactual').value;  
+  this.productos.StockMinimo = this.tercerFromGroup.get('stockminimo').value;   
+  console.log(this.productos);
 
     this.productoServicio.guardarProductos(this.productos)
     .subscribe(
       res =>{
         console.log(res);
-        this.router.navigate(['/productos'])
+        const confirmacion = window.confirm("Desea Agregar La Lista De Precio?");
+        if(confirmacion==true){
+          this.router.navigate(['/listaprecio/',this.productos.CodigoProducto=this.secondFormGroup.get('codigoproducto').value]);
+        }else{
+        this.router.navigate(['/productos']);
+        }
       },
       err => console.log(err)
     )
@@ -234,21 +197,21 @@ firstFormGroup: FormGroup = this._formBuilder.group({
   if(this.editar==false){
     return (codigo: string) => { 
       const correspondingOption = Array.isArray(this.options) ? this.options.find(option => option.codigo === codigo) : null;
-      return correspondingOption ? correspondingOption.nombre : '';
+      return correspondingOption ? correspondingOption.descripcion : '';
   }
     }else{
       return (codigo: string) => { 
         const correspondingOption = Array.isArray(this.options) ? this.options.find(option => option.codigo === codigo) : null;
         const v=  'jj';
-        return correspondingOption ? correspondingOption.nombre : 'JSON.stringify(v)';
+        return correspondingOption ? correspondingOption.descripcion : 'JSON.stringify(v)';
     }
 }
 }
 
-  private _filter(nombre: string): User[] {
-    const filterValue = nombre.toLowerCase();
+  private _filter(descripcion: string): User[] {
+    const filterValue = descripcion.toLowerCase();
 
-    return this.options.filter(option => option.nombre.toLowerCase().indexOf(filterValue) === 0);
+    return this.options.filter(option => option.descripcion.toLowerCase().indexOf(filterValue) === 0);
   }
   buscarCategoria(){
     this.productoServicio.getCategoria().subscribe(
@@ -262,8 +225,8 @@ firstFormGroup: FormGroup = this._formBuilder.group({
       this.filteredOptions = this.firstFormGroup.get('categoria').valueChanges
    .pipe(
      startWith(''),
-     map(value => typeof value === 'string' ? value : value.nombre),
-     map(nombre => nombre ? this._filter(nombre) : this.options.slice())
+     map(value => typeof value === 'string' ? value : value.descripcion),
+     map(descripcion => descripcion ? this._filter(descripcion) : this.options.slice())
    );
    
     }
@@ -272,14 +235,14 @@ firstFormGroup: FormGroup = this._formBuilder.group({
 displayFnMarca(user: Marca[]): (codigo: string) => string | null {
   return (codigo: string) => { 
     const correspondingOption = Array.isArray(this.optionsMarcas) ? this.optionsMarcas.find(option => option.codigo === codigo) : null;
-    return correspondingOption ? correspondingOption.nombre : '';
+    return correspondingOption ? correspondingOption.Descripcion : '';
   }
   
 }
-private _filterMarca(nombre: string): Marca[] {
-  const filterValue = nombre.toLowerCase();
+private _filterMarca(Descripcion: string): Marca[] {
+  const filterValue = Descripcion.toLowerCase();
 
-  return this.optionsMarcas.filter(option => option.nombre.toLowerCase().indexOf(filterValue) === 0);
+  return this.optionsMarcas.filter(option => option.Descripcion.toLowerCase().indexOf(filterValue) === 0);
 }
 
 buscarMarca(){
@@ -294,93 +257,32 @@ buscarMarca(){
     this.filteredOptionsMarcas = this.firstFormGroup.get('marca').valueChanges
    .pipe(
      startWith(''),
-     map(value => typeof value === 'string' ? value : value.nombre),
-     map(nombre => nombre ? this._filterMarca(nombre) : this.optionsMarcas.slice())
+     map(value => typeof value === 'string' ? value : value.Descripcion),
+     map(Descripcion => Descripcion ? this._filterMarca(Descripcion) : this.optionsMarcas.slice())
    );
   }
 //fin de autocompletado marca
-//Autocompletado Unidad de Medida
-displayFnMedida(user: Medida[]): (codigo: string) => string | null {
-  return (codigo: string) => { 
-    const correspondingOption = Array.isArray(this.optionsMedida) ? this.optionsMedida.find(option => option.codigo === codigo) : null;
-    return correspondingOption ? correspondingOption.nombre : '';
-  }
-  
-}
-private _filterMedida(nombre: string): Medida[] {
-  const filterValue = nombre.toLowerCase();
 
-  return this.optionsMedida.filter(option => option.nombre.toLowerCase().indexOf(filterValue) === 0);
-}
-
-buscarMedida(){
-  this.productoServicio.getMedida().subscribe(
-      res=>{
-        this.medida = res;
-        return this.optionsMedida = this.medida;
-      },
-      err => console.log(err)
-    ); 
-  
-    this.filteredOptionsMedida = this.firstFormGroup.get('medida').valueChanges
-   .pipe(
-     startWith(''),
-     map(value => typeof value === 'string' ? value : value.nombre),
-     map(nombre => nombre ? this._filterMedida(nombre) : this.optionsMedida.slice())
-   );
-  }
-//fin de autocompletado unidad de medida
-//Autocompletado presentacion
-displayFnPresentacion(user: Presentacion[]): (codigo: string) => string | null {
-  return (codigo: string) => { 
-    const correspondingOption = Array.isArray(this.optionsPresentacion) ? this.optionsPresentacion.find(option => option.codigo === codigo) : null;
-    return correspondingOption ? correspondingOption.descripcion : '';
-  }
-  
-}
-private _filterPresentacion(descripcion: string): Presentacion[] {
-  const filterValue = descripcion.toLowerCase();
-
-  return this.optionsPresentacion.filter(option => option.descripcion.toLowerCase().indexOf(filterValue) === 0);
-}
-
-buscarPresentacion(){
-  this.productoServicio.getPresentacion().subscribe(
-      res=>{
-        this.presentacion = res;
-       // console.log(this.presentacion);
-        return this.optionsPresentacion = this.presentacion;
-      },
-      err => console.log(err)
-    ); 
-  
-    this.filteredOptionsPresentacion = this.firstFormGroup.get('presentacion').valueChanges
-   .pipe(
-     startWith(''),
-     map(value => typeof value === 'string' ? value : value.descripcion),
-     map(descripcion => descripcion ? this._filterPresentacion(descripcion) : this.optionsPresentacion.slice())
-   );
-  }
 //fin de autocompletado presentacion
 //Autocompletado Unidad de Medida
 displayFnImpuesto(user: Impuesto[]): (codigo: string) => string | null {
   return (codigo: string) => { 
     const correspondingOption = Array.isArray(this.optionsImpuesto) ? this.optionsImpuesto.find(option => option.codigo === codigo) : null;
-    return correspondingOption ? correspondingOption.nombre : '';
+    return correspondingOption ? correspondingOption.Descripcion : '';
   }
   
 }
-private _filterImpuesto(nombre: string): Medida[] {
-  const filterValue = nombre.toLowerCase();
+private _filterImpuesto(Descripcion: string): Impuesto[] {
+  const filterValue = Descripcion.toLowerCase();
 
-  return this.optionsImpuesto.filter(option => option.nombre.toLowerCase().indexOf(filterValue) === 0);
+  return this.optionsImpuesto.filter(option => option.Descripcion.toLowerCase().indexOf(filterValue) === 0);
 }
 
 buscarImpuesto(){
   this.productoServicio.getCImpuesto().subscribe(
       res=>{
-        this.medida = res;
-        return this.optionsImpuesto = this.medida;
+        this.impuesto = res;
+        return this.optionsImpuesto = this.impuesto;
       },
       err => console.log(err)
     ); 
@@ -388,12 +290,42 @@ buscarImpuesto(){
     this.filteredOptionsImpuesto = this.firstFormGroup.get('impuesto').valueChanges
    .pipe(
      startWith(''),
-     map(value => typeof value === 'string' ? value : value.nombre),
-     map(nombre => nombre ? this._filterImpuesto(nombre) : this.optionsImpuesto.slice())
+     map(value => typeof value === 'string' ? value : value.Descripcion),
+     map(Descripcion => Descripcion ? this._filterImpuesto(Descripcion) : this.optionsImpuesto.slice())
    );
   }
 //fin de autocompletado unidad de medida
+//Autocompletado Deposito
+displayFnDeposito(user: Deposito[]): (codigo: string) => string | null {
+  return (codigo: string) => { 
+    const correspondingOption = Array.isArray(this.optionsDeposito) ? this.optionsDeposito.find(option => option.codigo === codigo) : null;
+    return correspondingOption ? correspondingOption.Nombre : '';
+  }
+  
+}
+private _filterDeposito(Nombre: string): Deposito[] {
+  const filterValue = Nombre.toLowerCase();
 
+  return this.optionsDeposito.filter(option => option.Nombre.toLowerCase().indexOf(filterValue) === 0);
+}
+
+buscarDeposito(){
+  this.productoServicio.getDeposito().subscribe(
+      res=>{
+        this.deposito = res;
+        return this.optionsDeposito = this.deposito;
+      },
+      err => console.log(err)
+    ); 
+  
+    this.filteredOptionsDeposito = this.firstFormGroup.get('deposito').valueChanges
+   .pipe(
+     startWith(''),
+     map(value => typeof value === 'string' ? value : value.Nombre),
+     map(Nombre => Nombre ? this._filterDeposito(Nombre) : this.optionsDeposito.slice())
+   );
+  }
+//fin de autocompletado marca
 prueba(){
   this.productoServicio.getPrueba().subscribe(
     result=>{

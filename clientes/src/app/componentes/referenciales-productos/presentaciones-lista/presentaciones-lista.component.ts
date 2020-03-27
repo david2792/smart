@@ -20,6 +20,7 @@ export class PresentacionesListaComponent implements OnInit {
     this.servicioPresentacion.getPresentacion().subscribe(
       res =>{
           this.presentaciones = res;
+          
       } ,
       err => console.log(err)
     );

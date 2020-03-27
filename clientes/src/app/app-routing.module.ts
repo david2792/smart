@@ -34,6 +34,7 @@ import { ClientesListaComponent } from './componentes/referenciales-personas/cli
 import { TipodocumentoListaComponent } from './componentes/referenciales-facturas/tipodocumento-lista/tipodocumento-lista.component';
 import { TipodocumentoFormularioComponent } from './componentes/referenciales-facturas/tipodocumento-formulario/tipodocumento-formulario.component';
 import { PresupuestoFormularioComponent } from './componentes/administrativo-presupuesto/presupuesto-formulario/presupuesto-formulario.component';
+import { ListaPrecioComponent } from './componentes/referenciales-productos/lista-precio/lista-precio.component';
 
 const routes: Routes = [
 
@@ -136,6 +137,10 @@ const routes: Routes = [
     {
       path: 'productos',
       component:ProductosListaComponent
+    },
+    {
+      path:'listaprecio/:id',
+      component:ListaPrecioComponent
     },
 
     //referenciales empresas

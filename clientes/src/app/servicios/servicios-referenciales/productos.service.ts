@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Productos } from '../../componentes/referenciales-productos/modelos/productos';
 import { Observable } from 'rxjs';
+import {Lista } from '../../componentes/referenciales-productos/modelos/listaPrecio';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,9 @@ export class ProductosService {
   getProductos(){
     return this.http.get(`${this.API_URI}/productos`);
   }
+  getCodigoProducto(){
+    return this.http.get(`${this.API_URI}/productos/agregar`);
+  }
   getUnProducto(codigobarra:Number):any{
     return this.http.get(`${this.API_URI}/productos/${codigobarra}`);
   }
@@ -23,6 +27,9 @@ export class ProductosService {
   }
   getMarca(){
     return this.http.get(`${this.API_URI}/productos/marca`);
+  }
+  getDeposito(){
+    return this.http.get(`${this.API_URI}/productos/deposito`);
   }
   getMedida(){
     return this.http.get(`${this.API_URI}/productos/unidades`);
@@ -39,8 +46,18 @@ export class ProductosService {
   eliminarProducto(codigoproducto:number){
     return this.http.delete(`${this.API_URI}/productos/${codigoproducto}`);
   }
-  actualizarProducto(id:number, actualizarProducto:Productos){
+  actualizarProducto(id:string, actualizarProducto:Productos){
     return this.http.put(`${this.API_URI}/productos/${id}`,actualizarProducto);
+  }
+  // aca comienza la parte de lista de precio
+  getUnaLista(id:string):any{
+    return this.http.get(`${this.API_URI}/listaprecio/${id}`);
+  }
+  getUnProductoLista(id:string):any{
+    return this.http.get(`${this.API_URI}/listaprecio/${id}`);
+  }
+  guardarLista(id:string,listaprecio:Lista):any{
+    return this.http.post(`${this.API_URI}/listaprecio/${id}`,listaprecio);
   }
 //prueba
 getPrueba():Observable<any>{

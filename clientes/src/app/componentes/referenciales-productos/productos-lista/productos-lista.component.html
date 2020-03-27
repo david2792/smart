@@ -13,77 +13,48 @@
                             
                             <ng-container matColumnDef = "codigoproducto">
                                <th mat-header-cell *matHeaderCellDef> Codigo</th>
-                               <td mat-cell *matCellDef = "let element"> {{element.codigoproducto}} </td>
+                               <td mat-cell *matCellDef = "let element"> {{element.CodigoProducto}} </td>
                             </ng-container>
                             <ng-container matColumnDef = "codigobarra">
                                 <th mat-header-cell *matHeaderCellDef> C.Barra</th>
-                                <td mat-cell *matCellDef = "let element"> {{element.codigobarra}} </td>
+                                <td mat-cell *matCellDef = "let element"> {{element.CodigoBarra}} </td>
                              </ng-container>
                              <ng-container matColumnDef = "descripcion">
                                 <th mat-header-cell *matHeaderCellDef> Descripcion</th>
-                                <td mat-cell *matCellDef = "let element"> {{element.descripcion}} </td>
+                                <td mat-cell *matCellDef = "let element"> {{element.Descripcion}} </td>
                              </ng-container>
+                             <ng-container matColumnDef = "categoria">
+                              <th mat-header-cell *matHeaderCellDef>Categoria </th>
+                              <td mat-cell *matCellDef = "let element"> {{element.Categoria}} </td>
+                           </ng-container>
+                           <ng-container matColumnDef = "marca">
+                              <th mat-header-cell *matHeaderCellDef>Marca </th>
+                              <td mat-cell *matCellDef = "let element"> {{element.Marca}} </td>
+                           </ng-container>
+                          <ng-container matColumnDef = "impuesto">
+                              <th mat-header-cell *matHeaderCellDef>Impuesto</th>
+                              <td mat-cell *matCellDef = "let element"> {{element.Impuesto}} </td>
+                           </ng-container>
                              <ng-container matColumnDef = "preciocompra">
                                 <th mat-header-cell *matHeaderCellDef>Precio Compra</th>
-                                <td mat-cell *matCellDef = "let element"> {{element.preciocompra | number}} </td>
-                             </ng-container>
-                             <ng-container matColumnDef = "precioventaminorista">
-                                <th mat-header-cell *matHeaderCellDef> Preccio Venta</th>
-                                <td mat-cell *matCellDef = "let element"> {{element.precioventaminorista}} </td>
-                             </ng-container>
-                             <ng-container matColumnDef = "preciomayorista">
-                                <th mat-header-cell *matHeaderCellDef>Precio Mayorista </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.preciomayorista}} </td>
-                             </ng-container>
-                             <ng-container matColumnDef = "limitedescuento">
-                                <th mat-header-cell *matHeaderCellDef>Descuento </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.limitedescuento}} </td>
-                             </ng-container>
+                                <td mat-cell *matCellDef = "let element"> {{element.PrecioCompra | number}} </td>
+                             </ng-container> 
                              <ng-container matColumnDef = "stockactual">
                                 <th mat-header-cell *matHeaderCellDef>Stock Actual </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.stockactual}} </td>
+                                <td mat-cell *matCellDef = "let element"> {{element.StockActual}} </td>
                              </ng-container>
                              <ng-container matColumnDef = "stockminimo">
                                 <th mat-header-cell *matHeaderCellDef>Stock Minimo </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.stockminimo}} </td>
-                             </ng-container>
-                             <ng-container matColumnDef = "stockmaximo">
-                                <th mat-header-cell *matHeaderCellDef>Stock Maximo </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.stockmaximo}} </td>
-                             </ng-container>
-                             <ng-container matColumnDef = "cantidadpresentacion">
-                                <th mat-header-cell *matHeaderCellDef>Cant. Presentacion </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.cantidadpresentacion}} </td>
-                             </ng-container>
-                             <ng-container matColumnDef = "categoria">
-                                <th mat-header-cell *matHeaderCellDef>Categoria </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.categoria}} </td>
-                             </ng-container>
-                             <ng-container matColumnDef = "marca">
-                                <th mat-header-cell *matHeaderCellDef>Marca </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.marca}} </td>
-                             </ng-container>
-                             <ng-container matColumnDef = "medida">
-                                <th mat-header-cell *matHeaderCellDef>Medida </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.medida}} </td>
-                             </ng-container>
-            
-                            <ng-container matColumnDef = "presentacion">
-                                <th mat-header-cell *matHeaderCellDef>Presentacion </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.presentacion}} </td>
-                             </ng-container>
-                            <ng-container matColumnDef = "impuesto">
-                                <th mat-header-cell *matHeaderCellDef>Impuesto</th>
-                                <td mat-cell *matCellDef = "let element"> {{element.impuesto}} </td>
+                                <td mat-cell *matCellDef = "let element"> {{element.StockMinimo}} </td>
                              </ng-container>
                              <ng-container matColumnDef = "deposito">
                                 <th mat-header-cell *matHeaderCellDef>L.Desc </th>
-                                <td mat-cell *matCellDef = "let element"> {{element.deposito}} </td>
+                                <td mat-cell *matCellDef = "let element"> {{element.Deposito}} </td>
                              </ng-container>
 
                              <ng-container matColumnDef = "accion">
                                 <th mat-header-cell *matHeaderCellDef>Acciones </th>
-                                <td mat-cell *matCellDef = "let row"> <button [routerLink]="['/productos/editar',row.codigoproducto]"  class="btn btn-primary">
+                                <td mat-cell *matCellDef = "let row"> <button [routerLink]="['/productos/editar',row.CodigoProducto]"  class="btn btn-primary">
                                     <i  class="fa fa-edit"></i>
                                   </button></td>
                              </ng-container>

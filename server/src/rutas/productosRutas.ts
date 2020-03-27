@@ -12,8 +12,10 @@ class ProductosRutas
    config():void
    {
        this.router.get('/',productoControlador.listar);
+       this.router.get('/agregar',productoControlador.recuperarCodigo);
        this.router.get('/categoria',productoControlador.listarCategoria);
        this.router.get('/marca',productoControlador.listarMarcas);
+       this.router.get('/deposito',productoControlador.listarDeposito);
        this.router.get('/unidades',productoControlador.listarMedida);
        this.router.get('/presentacion',productoControlador.listarPresentacion);
        this.router.get('/impuesto',productoControlador.listarImpuesto);

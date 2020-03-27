@@ -9,8 +9,10 @@ class ProductosRutas {
     }
     config() {
         this.router.get('/', productosControlador_1.productoControlador.listar);
+        this.router.get('/agregar', productosControlador_1.productoControlador.recuperarCodigo);
         this.router.get('/categoria', productosControlador_1.productoControlador.listarCategoria);
         this.router.get('/marca', productosControlador_1.productoControlador.listarMarcas);
+        this.router.get('/deposito', productosControlador_1.productoControlador.listarDeposito);
         this.router.get('/unidades', productosControlador_1.productoControlador.listarMedida);
         this.router.get('/presentacion', productosControlador_1.productoControlador.listarPresentacion);
         this.router.get('/impuesto', productosControlador_1.productoControlador.listarImpuesto);

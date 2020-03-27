@@ -15,6 +15,7 @@ class PresupuestoRutas {
         this.router.get('/clientes', presupuestoControlador_1.presupuestoControlador.listarCliente);
         this.router.get('/productos', presupuestoControlador_1.presupuestoControlador.listarProducto);
         this.router.get('/productosvista', presupuestoControlador_1.presupuestoControlador.listarProductoVista);
+        this.router.get('/:id', presupuestoControlador_1.presupuestoControlador.listarUnProducto);
     }
 }
 const presupuestoRutas = new PresupuestoRutas();

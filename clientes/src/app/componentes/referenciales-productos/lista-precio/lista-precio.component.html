@@ -1,0 +1,108 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+            <form   [formGroup]="firstFormGroup">
+                <table class="example-full-width" cellspacing="0"><tr>
+                    <td><mat-form-field class="example-full-width">
+                        <mat-label>Codigo Producto</mat-label>
+                      <input matInput disabled disabled formControlName="CodigoProducto" >
+                    </mat-form-field></td>
+                    <td><mat-form-field class="example-full-width" cellspacing="0">
+                        <mat-label>Codigo Deposito</mat-label>
+                        <input matInput formControlName="codigoDeposito">
+                    </mat-form-field></td>
+                  </tr></table>
+                <table class="example-full-width" cellspacing="0"><tr>
+                <td><mat-form-field class="example-full-width">
+                    <mat-label>Deposito</mat-label>
+                    <input matInput formControlName="Deposito">
+                </mat-form-field></td>
+                <td><mat-form-field class="example-full-width" cellspacing="0">
+                    <mat-label>Descripcion del Producto</mat-label>
+                    <input matInput formControlName="Producto">
+                </mat-form-field></td>
+                </tr></table>
+            
+                <table class="example-full-width" cellspacing="0"><tr>
+                    <td><mat-form-field class="example-full-width">
+                    <mat-label >Descripcion del Precio</mat-label>
+                    <input matInput formControlName="Descripcion">
+                    </mat-form-field></td>
+                    <td><mat-form-field class="example-full-width" cellspacing="0">
+                    <mat-label>Precio Compra</mat-label>
+                    <input matInput formControlName="PrecioCompra">
+                    </mat-form-field></td>
+                    <td><mat-form-field class="example-full-width" cellspacing="0">
+                        <mat-label>Porcentaje</mat-label>
+                        <input matInput formControlName="Porcentaje">
+                    </mat-form-field></td>
+                    <td><mat-form-field class="example-full-width" cellspacing="0">
+                        <mat-label>Precio</mat-label>
+                        <input matInput formControlName="Precio">
+                    </mat-form-field></td>
+                    <td><mat-form-field class="example-full-width" cellspacing="0">
+                        <mat-label>Cuota</mat-label>
+                        <input matInput formControlName="Cuota">
+                    </mat-form-field></td>
+                </tr></table>
+                <table class="example-full-width" cellspacing="0"><tr>
+                    <td><button mat-raised-button color="primary" (click)="nuevoProductos()">GUARDAR</button></td>
+                    <td><button mat-raised-button color="accent">Limpiar</button></td>
+                    </tr></table>
+            
+            </form>
+
+            <table mat-table [dataSource]= "dataSource" class="mat-elevation-z8">
+
+                <!-- Checkbox Column -->
+                <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                    <mat-checkbox (change)="$event ? masterToggle() : null"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                [aria-label]="checkboxLabel()">
+                    </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null"
+                                [checked]="selection.isSelected(row)"
+                                [aria-label]="checkboxLabel(row)">
+                    </mat-checkbox>
+                </td>
+                </ng-container>
+            
+                <!-- Position Column -->
+                <ng-container matColumnDef="Codigo">
+                <th mat-header-cell *matHeaderCellDef> Codigo. </th>
+                <td mat-cell *matCellDef= "let element"> {{element.Codigo}} </td>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="Descripcion">
+                <th mat-header-cell *matHeaderCellDef> Descripcion </th>
+                <td mat-cell *matCellDef= "let element"> {{element.Descripcion}} </td>
+                </ng-container>
+            
+                <!-- Weight Column -->
+                <ng-container matColumnDef="cuotas">
+                <th mat-header-cell *matHeaderCellDef> Cuotas </th>
+                <td mat-cell *matCellDef= "let element"> {{element.cuotas}} </td>
+                </ng-container>
+            
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="Porcentaje">
+                <th mat-header-cell *matHeaderCellDef> Porcentaje </th>
+                <td mat-cell *matCellDef= "let element"> {{element.Porcentaje}} </td>
+                </ng-container>
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef= "let row; columns: displayedColumns;"
+                    (click)="selection.toggle(row)">
+                </tr>
+            </table>
+        </div>
+    </div>
+ </div>
+</div>

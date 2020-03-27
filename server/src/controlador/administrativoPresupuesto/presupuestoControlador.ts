@@ -92,6 +92,16 @@ class PresupuestoControlador
     const productos = await pool.query('SELECT codigoproducto,codigobarra,descripcion,preciocompra,precioventaminorista FROM vproductos');
     res.json(productos);
   }
+  public async listarUnProducto (req:Request,res:Response):Promise<any>{
+    const { id }= req.params;
+    const productos =  await pool.query('SELECT * FROM  vproductos WHERE codigoproducto=?',[id]);
+    if(productos.length > 0){
+      return res.json(productos[0]);
+      console.log(productos);
+    }
+    res.status(404).json({text:'El producto no existe'});
+  
+  }
 }
 
 export const presupuestoControlador = new PresupuestoControlador();

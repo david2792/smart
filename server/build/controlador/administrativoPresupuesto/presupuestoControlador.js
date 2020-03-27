@@ -101,5 +101,16 @@ class PresupuestoControlador {
             res.json(productos);
         });
     }
+    listarUnProducto(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const productos = yield base_datos_1.default.query('SELECT * FROM  vproductos WHERE codigoproducto=?', [id]);
+            if (productos.length > 0) {
+                return res.json(productos[0]);
+                console.log(productos);
+            }
+            res.status(404).json({ text: 'El producto no existe' });
+        });
+    }
 }
 exports.presupuestoControlador = new PresupuestoControlador();

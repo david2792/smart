@@ -1,0 +1,57 @@
+
+<div class="example-container mat-elevation-z8">
+    <div class="example-header">
+        <mat-form-field>
+          <input matInput (keyup)="doFilter($event.target.value)" placeholder="Buscar Productos">
+        </mat-form-field>
+     </div>
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!-- Checkbox Column -->
+      <ng-container matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox (change)="$event ? masterToggle() : null"
+                        [checked]="selection.hasValue() && isAllSelected()"
+                        [indeterminate]="selection.hasValue() && !isAllSelected()">
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox (click)="$event.stopPropagation()"
+                        (change)="$event ? selection.toggle(row) : null"
+                        [checked]="selection.isSelected(row)">
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="codigoproducto">
+        <mat-header-cell *matHeaderCellDef> Codigo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.codigoproducto}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="descripcion">
+        <mat-header-cell *matHeaderCellDef> Descripcion </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.descripcion}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="precioventaminorista">
+        <mat-header-cell *matHeaderCellDef> Precio Venta </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.precioventaminorista}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="stockactual">
+        <mat-header-cell *matHeaderCellDef> Stock Actual </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.stockactual}} </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"
+               (click)="selection.toggle(row)">
+      </mat-row>
+    </mat-table>
+    <mat-paginator [pageSize]="4" [pageSizeOptions]="[4, 6, 10, 20]">
+    </mat-paginator>
+    <div mat-dialog-actions>
+        <button mat-button (click)="cancelar()">Cancelar</button>
+        <button mat-button (click)="confirmar()">Confirmar</button>
+    </div>
+</div>
+  
